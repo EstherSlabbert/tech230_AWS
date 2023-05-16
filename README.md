@@ -73,7 +73,7 @@ Amazon Web Services (AWS) was launched by Amazon.com in 2006, after the company 
 - Microsoft Azure
 - Google Cloud Platform
 
-[Top 10 Cloud service providers in 2023](https://www.c-sharpcorner.com/article/top-10-cloud-service-providers/))
+[Top 10 Cloud service providers in 2023](https://www.c-sharpcorner.com/article/top-10-cloud-service-providers/)
 
 ## What is IaaS, PaaS and SaaS?
 
@@ -101,7 +101,7 @@ In summary, public cloud is the most widely used deployment model, private cloud
 
 ## What types of industry/business use the different types of cloud? (e.g. who uses a private cloud?)
 
-![Cloud model comparison](cloud-comparison.jpeg)
+![Cloud model comparison](cloud-comparison.jpg)
 
 Public cloud: Public cloud is best suited for businesses that have variable demands and want to scale their infrastructure quickly. This type of cloud computing is suitable for startups, small businesses, and companies that need to host non-critical applications or services. Examples of public cloud providers include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform.
 
