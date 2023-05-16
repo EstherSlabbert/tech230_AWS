@@ -2,7 +2,7 @@
 
 ### SSH key storage
 
-1. Move the appropriate file containing your private SSH key provided to you by your organisation to your '.ssh' folder, located at 'C:/User/Username/.ssh'.
+1. Move the appropriate file, in this case tech230.pem, containing your private SSH key provided to you by your organisation to your '.ssh' folder, located at 'C:/User/Username/.ssh'.
 
 ### Login to AWS
 
@@ -24,4 +24,35 @@ EC2 (Elastic Cloud 2) instance is essentially a Virtual Machine.
 ![Quick Start](quick_start.png)
 5. Scroll further and select the 'Instance type' shown below.  This, essentially, tells us how much hardware we need. (Note: We use t2.micro for all instances unless specifically told otherwise.)
 ![Instance type](instance_type.png)
-6. Scroll down to 'Key pair (login)'
+6. Scroll down to 'Key pair (login)' and select the appropriate one, in this case 'tech230'.
+![key login](key_login.png)
+7. Scroll down to 'Network Settings' and click 'edit'. Then add a name, in this case 'tech230_esther_first_sg', and a description, in this case 'my first security group'.
+![network settings](network_settings1.png)
+![network name](network_settings2.png)
+8. Scroll down to the 'Security Group' section - this is where you customise who can access your EC2 instance.
+![SG](security_group.png)
+9. Scroll down to 'Configure storage', where you can add more or less storage to your instance.
+![Storage](storage.png)
+
+### Launch EC2 instance
+
+10. On the side you can see the 'Summary' block where you can see all the configurations you have made. If you are happy with all of them then click the orange 'Launch instance' button at the bottom of the 'Summary' block.
+
+### Exploring the information
+
+If you go to 'Instances' page and it will show all the instances available. You can filter them to show the runnning instances or search for the name of your instance or your instance ID. You can see important information relating to the EC2 from here and the status check should say '2/2 checks passed' or 'initializing' if it has not yet done so. Once it says '2/2 checks passed' then you should be able to login to the EC2 instance. The public IPv4 is the address people will use to access the content the EC2 instance is sharing based on the settings specified. The Private IP is used to get into the EC2 instance itself.
+
+### Connecting to the EC2 instance
+
+11. Find your instance on the 'Instances' page and click on the blue 'Instance ID'.
+![EC2 instance info](private_ip.png)
+12. Click on the 'Connect' button on that page.
+![Connect instance](connect_instance.png)
+13. Ensure you select the 'SSH client'. It gives you instructions to connect, which I will outline in the next steps.
+14. Open your terminal and cd into your '.ssh' directory, then enter `chmod 400 tech230.pem`, which allows reading privileges for all. It should not return anything. (Note: to see the permissions type `ls -l`)
+15. Copy the generated code under 'Example' and paste it into your terminal and enter. (Breakdown command: `ssh i-` uses ssh protocol, i=identity; `"tech230.pem"` which is how we are gaining ssh access; `ubuntu` is the username that it should provide, if not change it before entering; )
+![connect](connect1.png)
+
+### Stop or Terminate your EC2 instance
+
+
