@@ -1,5 +1,7 @@
 # AWS and Cloud Computing
 
+This repository contains information about Cloud Computing and AWS, it has another markdown detailing how to setup an EC2 instance with AWS which can be found here: [EC2 Instance markdown](https://github.com/EstherSlabbert/tech230_AWS/blob/main/aws_ec2_instance.md).
+
 ## What is cloud computing?
 
 Cloud computing is **on-demand access**, via the internet, **to computing resources**—applications, servers (physical servers and virtual servers), data storage, development tools, networking capabilities, and more—hosted at a remote data center managed by a cloud services provider (or CSP). The CSP makes these resources available for a monthly subscription fee or bills them according to usage.
