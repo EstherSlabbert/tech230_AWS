@@ -32,6 +32,8 @@ Cloud computing has its roots in the concept of utility computing, which dates b
 
 - Disaster recovery: Cloud providers often have backup and disaster recovery solutions built into their services, making it easier to recover from a disaster or data loss.
 
+[Salesforce - Benefits of cloud computing](https://www.salesforce.com/products/platform/best-practices/benefits-of-cloud-computing/)
+
 ## What are the main benefits of cloud computing for a business?
 
 - Cost savings: Cloud computing eliminates the need for businesses to invest in expensive hardware and infrastructure, and provides the flexibility to pay for only the services and resources they use.
@@ -45,6 +47,8 @@ Cloud computing has its roots in the concept of utility computing, which dates b
 - Improved security: Cloud computing providers typically invest heavily in security measures and have expertise in managing security risks, which can help businesses improve their overall security posture.
 
 Overall, cloud computing provides businesses with greater agility, flexibility, and efficiency, allowing them to focus on their core business objectives while leaving the IT infrastructure to the experts.
+
+[Westlake - Benefits of cloud computing for businesses](https://www.westlake-it.co.uk/news/2022/05/30/benefits-of-cloud-computing-for-businesses/)
 
 ## What is AWS?
 
@@ -67,19 +71,23 @@ Amazon Web Services (AWS) was launched by Amazon.com in 2006, after the company 
 
 ## What is IaaS, PaaS and SaaS? Make a diagram please.
 
-- **Infrastructure as a Service (IaaS)**: IaaS contains the basic building blocks for cloud IT. It typically provides access to networking features, computers (virtual or on dedicated hardware), and data storage space. IaaS gives you the highest level of flexibility and management control over your IT resources. It is most similar to the existing IT resources with which many IT departments and developers are familiar. 
-- **Platform as a Service (PaaS)**: PaaS removes the need for you to manage underlying infrastructure (usually hardware and operating systems), and allows you to focus on the deployment and management of your applications. This helps you be more efficient as you don’t need to worry about resource procurement, capacity planning, software maintenance, patching, or any of the other undifferentiated heavy lifting involved in running your application. 
+- **Infrastructure as a Service (IaaS)**: IaaS contains the basic building blocks for cloud IT. It typically provides access to networking features, computers (virtual or on dedicated hardware), and data storage space. IaaS gives you the highest level of flexibility and management control over your IT resources. It is most similar to the existing IT resources with which many IT departments and developers are familiar.
+
+- **Platform as a Service (PaaS)**: PaaS removes the need for you to manage underlying infrastructure (usually hardware and operating systems), and allows you to focus on the deployment and management of your applications. This helps you be more efficient as you don’t need to worry about resource procurement, capacity planning, software maintenance, patching, or any of the other undifferentiated heavy lifting involved in running your application.
+
 - **Software as a Service (SaaS)**: SaaS provides you with a complete product that is run and managed by the service provider. In most cases, people referring to SaaS are referring to end-user applications (such as web-based email). With a SaaS offering, you don’t have to think about how the service is maintained or how the underlying infrastructure is managed. You only need to think about how you will use that particular software.
+
+![Cloud Computing Models diagram](Cloud_models.png)
 
 ## What is the difference between public cloud, hybrid cloud and private cloud?
 
 The three primary cloud deployment models:
 
-Public cloud: Public cloud refers to a cloud computing model in which services are delivered over the internet by third-party cloud service providers such as AWS, Google Cloud, and Microsoft Azure. The infrastructure is shared by multiple organizations and the cloud provider manages the hardware, software, and other infrastructure components.
+**Public cloud**: Public cloud refers to a cloud computing model in which services are delivered over the internet by third-party cloud service providers such as AWS, Google Cloud, and Microsoft Azure. The infrastructure is shared by multiple organizations and the cloud provider manages the hardware, software, and other infrastructure components.
 
-Private cloud: Private cloud refers to a cloud infrastructure that is solely dedicated to one organization. Private clouds can be located on-premises or can be hosted by a third-party service provider. Private clouds provide greater control and security, but also require more management and maintenance.
+**Private cloud**: Private cloud refers to a cloud infrastructure that is solely dedicated to one organization. Private clouds can be located on-premises or can be hosted by a third-party service provider. Private clouds provide greater control and security, but also require more management and maintenance.
 
-Hybrid cloud: Hybrid cloud is a combination of public and private cloud models. It allows organizations to maintain a private cloud for sensitive data and applications while using public cloud services for other non-sensitive workloads. Hybrid clouds offer the benefits of both public and private clouds, but can be more complex to manage.
+**Hybrid cloud**: Hybrid cloud is a combination of public and private cloud models. It allows organizations to maintain a private cloud for sensitive data and applications while using public cloud services for other non-sensitive workloads. Hybrid clouds offer the benefits of both public and private clouds, but can be more complex to manage.
 
 In summary, public cloud is the most widely used deployment model, private cloud provides greater control and security, while hybrid cloud combines the benefits of both models.
 
@@ -95,9 +103,9 @@ In summary, the choice of cloud computing model depends on factors such as workl
 
 ## What is Operating expenditure (OpEx) and What is Capital expenditure (CapEx)?
 
-Operating expenditure (OpEx) refers to the day-to-day expenses incurred by a business to maintain its operations, such as salaries, rent, utilities, and other recurring expenses. OpEx is usually considered as a regular and ongoing expense for the business.
+**Operating expenditure (OpEx)** refers to the day-to-day expenses incurred by a business to maintain its operations, such as salaries, rent, utilities, and other recurring expenses. OpEx is usually considered as a regular and ongoing expense for the business.
 
-Capital expenditure (CapEx), on the other hand, refers to the funds spent by a business on acquiring or upgrading fixed assets, such as buildings, equipment, and machinery. CapEx is usually a one-time expense and is meant to generate long-term benefits for the business.
+**Capital expenditure (CapEx)**, on the other hand, refers to the funds spent by a business on acquiring or upgrading fixed assets, such as buildings, equipment, and machinery. CapEx is usually a one-time expense and is meant to generate long-term benefits for the business.
 
 In short, OpEx is the money spent to keep the business running, while CapEx is the money spent to grow and improve the business.
 
@@ -113,6 +121,8 @@ The cloud allows businesses to transfer from CapEx to OpEx spending by offering 
 
 ## Case studies on companies that have transferred to the Cloud and what that has allowed them to do? 1-3 recommended.
 
+### Case Study 1: Airbnb
+
 Company: Airbnb
 
 Background: Airbnb is an online marketplace that connects people who need a place to stay with homeowners who are willing to rent out their homes or apartments.
@@ -121,11 +131,22 @@ What they did: In 2019, Airbnb announced that it had completed a multi-year migr
 
 Results: By moving to the cloud, Airbnb was able to increase its computing capacity, improve its disaster recovery capabilities, and reduce costs. The company was also able to more quickly scale its infrastructure up and down based on demand. In addition, by building its own data center network, Airbnb was able to reduce its dependence on cloud providers and improve the reliability and performance of its services.
 
+[Airbnb case ctudy](https://abhiraj19000.medium.com/aws-airbnb-case-study-43e34e9fb8b3)
+
+### Case Study 2: Netflix
+
 Netflix:
 Netflix is a popular streaming service that was previously using a traditional data center for their services. However, in 2008, Netflix decided to shift to the cloud by migrating its entire infrastructure to Amazon Web Services (AWS). With this move, Netflix was able to achieve a highly scalable and efficient infrastructure, allowing it to handle millions of requests per minute from its worldwide subscribers. Netflix also found that by using AWS, they could easily expand into new regions with lower latency, allowing them to deliver content faster to their customers.
+
+[Netflix case study](https://www.cloudsine.tech/news-trends/case-study-how-netflix-uses-cloud-for-innovation-agility-and-scalability/)
+
+### Case Study 3: Capital One
 
 Capital One:
 Capital One is a leading banking and financial services provider in the United States. They decided to move to the cloud in 2014 to improve their digital customer experience, which was previously running on legacy systems. With AWS, Capital One was able to create new products and services faster and with greater flexibility. They were also able to reduce their time-to-market, accelerate innovation, and lower operational costs, all while maintaining the highest levels of security and compliance.
 
+[Capital One case study](https://systemweakness.com/case-study-aws-and-capital-one-c4ad6cb71c79)
+<!--
 Unilever:
-Unilever is a multinational consumer goods company that has been in operation since 1929. In 2015, Unilever decided to move its entire IT infrastructure to the cloud to improve collaboration and agility across its global operations. By migrating to the cloud, Unilever was able to consolidate its IT resources and achieve better efficiency, agility, and scalability. The company also realized significant cost savings and reduced time-to-market for new products, which allowed them to respond faster to changing market conditions.
+Unilever is a multinational consumer goods company that has been in operation since 1929. In 2015, Unilever decided to move its entire IT infrastructure to the cloud to improve collaboration and agility across its global operations. By migrating to the cloud, Unilever was able to consolidate its IT resources and achieve better efficiency, agility, and scalability. The company also realized significant cost savings and reduced time-to-market for new products, which allowed them to respond faster to changing market conditions. [Unilever case study](https://medium.com/@sarthaksriw/aws-case-study-unilever-c032260c6e0e)
+-->
