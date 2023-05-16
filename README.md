@@ -8,6 +8,8 @@ Cloud computing is **on-demand access**, via the internet, **to computing resour
 
 [Amazon - Cloud Computing](https://aws.amazon.com/what-is-cloud-computing/)
 
+[RedHat - Cloud Computing](https://www.redhat.com/en/topics/cloud-computing/what-are-cloud-services)
+
 ## Quick history of cloud computing
 
 Cloud computing has its roots in the concept of utility computing, which dates back to the 1960s. However, the modern concept of cloud computing emerged in the late 1990s, with the introduction of Salesforce.com's web-based sales automation software. The term "cloud computing" was coined in the early 2000s, and the concept gained momentum as internet bandwidth and infrastructure improved. Amazon Web Services (AWS) launched in 2006, followed by Google Cloud Platform and Microsoft Azure in 2008 and 2010 respectively. Since then, cloud computing has become a ubiquitous technology, with businesses and individuals relying on cloud services for everything from file storage to application hosting. Today, cloud computing has become an integral part of modern business and is used for a variety of purposes, including hosting websites, storing and processing data, and running applications
