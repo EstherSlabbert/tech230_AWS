@@ -10,6 +10,8 @@ Cloud computing is **on-demand access**, via the internet, **to computing resour
 
 [RedHat - Cloud Computing](https://www.redhat.com/en/topics/cloud-computing/what-are-cloud-services)
 
+We use the cloud pretty much every day. Cloud services include: email; Office 365; Dropbox, Image Hosting, GitHub; OneDrive, iCloud etc.; Social Media; Content streaming services - Netflix, Disney +, Spotify etc.;Steam, Epic Games, GoG galaxy; F1/sports -> AI cloud analytics.
+
 ## Quick history of cloud computing
 
 Cloud computing has its roots in the concept of utility computing, which dates back to the 1960s. However, the modern concept of cloud computing emerged in the late 1990s, with the introduction of Salesforce.com's web-based sales automation software. The term "cloud computing" was coined in the early 2000s, and the concept gained momentum as internet bandwidth and infrastructure improved. Amazon Web Services (AWS) launched in 2006, followed by Google Cloud Platform and Microsoft Azure in 2008 and 2010 respectively. Since then, cloud computing has become a ubiquitous technology, with businesses and individuals relying on cloud services for everything from file storage to application hosting. Today, cloud computing has become an integral part of modern business and is used for a variety of purposes, including hosting websites, storing and processing data, and running applications
@@ -24,7 +26,7 @@ Cloud computing has its roots in the concept of utility computing, which dates b
 
 - Cost savings: Cloud computing can reduce your IT infrastructure costs, as you don't have to purchase and maintain your own servers and other hardware.
 
-- Flexibility: Cloud computing allows you to access your data and applications from anywhere with an internet connection, giving you more flexibility and mobility.
+- Flexibility: Cloud computing allows you to access your data and applications from anywhere with an internet connection, giving you more flexibility and mobility. Allows you to go global easily.
 
 - Reliability: Cloud providers offer high levels of reliability and uptime, which can be difficult to achieve with on-premises infrastructure.
 
@@ -32,21 +34,23 @@ Cloud computing has its roots in the concept of utility computing, which dates b
 
 - Collaboration: Cloud computing can facilitate collaboration among teams, allowing them to work together on projects in real-time, no matter where they are located.
 
-- Disaster recovery: Cloud providers often have backup and disaster recovery solutions built into their services, making it easier to recover from a disaster or data loss.
+- Disaster recovery: Cloud providers often have backup and disaster recovery solutions built into their services, making it easier to recover from a disaster or data loss. No maintainence is required from our side.
 
 [Salesforce - Benefits of cloud computing](https://www.salesforce.com/products/platform/best-practices/benefits-of-cloud-computing/)
 
 ## What are the main benefits of cloud computing for a business?
 
-- Cost savings: Cloud computing eliminates the need for businesses to invest in expensive hardware and infrastructure, and provides the flexibility to pay for only the services and resources they use.
+- Cost savings: Cloud computing eliminates the need for businesses to invest in expensive hardware and infrastructure, and provides the flexibility to pay for only the services and resources they use. (Takes advantage of economies of scale - reduced prices for bulk purchases.)
 
-- Scalability and flexibility: Businesses can easily scale up or down their computing resources as their needs change, without having to invest in additional hardware or infrastructure.
+- Scalability and flexibility: Businesses can easily scale up or down their computing resources as their needs change, without having to invest in additional hardware or infrastructure. No maintainence is required from our side. Able to go global more easily and faster time to market. Updates and improvements to features.
 
 - Increased collaboration and productivity: Cloud computing enables employees to work together seamlessly from any location, using any device, which can boost collaboration and productivity.
 
 - Disaster recovery and business continuity: Cloud computing providers typically offer robust disaster recovery and business continuity solutions, ensuring that businesses can recover quickly in the event of a disaster or outage.
 
 - Improved security: Cloud computing providers typically invest heavily in security measures and have expertise in managing security risks, which can help businesses improve their overall security posture.
+
+- Environmentally more sustainable.
 
 Overall, cloud computing provides businesses with greater agility, flexibility, and efficiency, allowing them to focus on their core business objectives while leaving the IT infrastructure to the experts.
 
@@ -71,7 +75,7 @@ Amazon Web Services (AWS) was launched by Amazon.com in 2006, after the company 
 
 [Top 10 Cloud service providers in 2023](https://www.c-sharpcorner.com/article/top-10-cloud-service-providers/))
 
-## What is IaaS, PaaS and SaaS? Make a diagram please.
+## What is IaaS, PaaS and SaaS?
 
 - **Infrastructure as a Service (IaaS)**: IaaS contains the basic building blocks for cloud IT. It typically provides access to networking features, computers (virtual or on dedicated hardware), and data storage space. IaaS gives you the highest level of flexibility and management control over your IT resources. It is most similar to the existing IT resources with which many IT departments and developers are familiar.
 
@@ -85,15 +89,19 @@ Amazon Web Services (AWS) was launched by Amazon.com in 2006, after the company 
 
 The three primary cloud deployment models:
 
-**Public cloud**: Public cloud refers to a cloud computing model in which services are delivered over the internet by third-party cloud service providers such as AWS, Google Cloud, and Microsoft Azure. The infrastructure is shared by multiple organizations and the cloud provider manages the hardware, software, and other infrastructure components.
+![Cloud Types](cloud_types.png)
 
-**Private cloud**: Private cloud refers to a cloud infrastructure that is solely dedicated to one organization. Private clouds can be located on-premises or can be hosted by a third-party service provider. Private clouds provide greater control and security, but also require more management and maintenance.
+**Public cloud**: Public cloud refers to a cloud computing model in which services are delivered over the internet by third-party cloud service providers such as AWS, Google Cloud, and Microsoft Azure. The **infrastructure is shared by multiple organizations** and the cloud provider manages the hardware, software, and other infrastructure components.
+
+**Private cloud**: Private cloud refers to a cloud infrastructure that is **solely dedicated to one organization**. Private clouds can be located on-premises or can be hosted by a third-party service provider. Private clouds provide greater control and security, but also require more management and maintenance.
 
 **Hybrid cloud**: Hybrid cloud is a combination of public and private cloud models. It allows organizations to maintain a private cloud for sensitive data and applications while using public cloud services for other non-sensitive workloads. Hybrid clouds offer the benefits of both public and private clouds, but can be more complex to manage.
 
 In summary, public cloud is the most widely used deployment model, private cloud provides greater control and security, while hybrid cloud combines the benefits of both models.
 
 ## What types of industry/business use the different types of cloud? (e.g. who uses a private cloud?)
+
+![Cloud model comparison](cloud-comparison.jpeg)
 
 Public cloud: Public cloud is best suited for businesses that have variable demands and want to scale their infrastructure quickly. This type of cloud computing is suitable for startups, small businesses, and companies that need to host non-critical applications or services. Examples of public cloud providers include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform.
 
