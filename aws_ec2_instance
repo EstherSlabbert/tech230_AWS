@@ -1,0 +1,27 @@
+# AWS EC2 instance
+
+### SSH key storage
+
+1. Move the appropriate file containing your private SSH key provided to you by your organisation to your '.ssh' folder, located at 'C:/User/Username/.ssh'.
+
+### Login to AWS
+
+Your Login details must be kept confidential!
+1. Use the provided details to login to AWS at [AWS DevOps login page](https://sparta-devops.signin.aws.amazon.com/console).
+2. Ensure your region is the correct one. At Sparta we use 'Europe (Ireland) eu-west-1'. ![Region](select_region.png)
+
+### Create EC2 instance
+
+EC2 (Elastic Cloud 2) instance is essentially a Virtual Machine.
+
+1. Search for EC2 in the search bar and select EC2.
+![EC2](select_EC2.png)
+2. Scroll down and click on the orange 'Launch instance' and select 'Launch instance' from the drop down.
+![EC2 launch](launch_ec2.png)
+3. Name the instance according to good practice naming conventions for your organisation. Sparta follows this format: group, name, type of instance/resource (eg. tech230_esther_first_ec2)
+![Name](name_instance.png)
+4. Scroll down and select the 'Quick Start' menu and select the OS you want and configure it with the settings you select. In this case: Ubuntu Server 22.04 etc. as shown in the image below.
+![Quick Start](quick_start.png)
+5. Scroll further and select the 'Instance type' shown below.  This, essentially, tells us how much hardware we need. (Note: We use t2.micro for all instances unless specifically told otherwise.)
+![Instance type](instance_type.png)
+6. Scroll down to 'Key pair (login)'
