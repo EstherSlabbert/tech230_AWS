@@ -1,5 +1,27 @@
-# AWS EC2 instance
+# AWS EC2 instances and AMIs
 
+# Table of contents
+- [Table of Contents](#table-of-contents)
+- [EC2 instances](#ec2-instances)
+  - [SSH key storage](#ssh-key-storage)
+  - [Login to AWS](#login-to-aws)
+  - [Create EC2 instance](#create-ec2-instance)
+  - [Launch EC2 instance](#launch-ec2-instance)
+  - [Exploring the EC2 instance information](#exploring-the-ec2-instance-information)
+  - [Connecting to the EC2 instance](#connecting-to-the-ec2-instance)
+  - [Setting up Nginx on EC2 instance](#setting-up-nginx-on-ec2-instance)
+  - [Stop or Terminate your EC2 instance](#stop-or-terminate-your-ec2-instance)
+  - [Provisioning Nginx with User Data](#provisioning-nginx-with-user-data)
+ - [AMI - Amazon Machine Images](#ami---amazon-machine-images)
+   - [Create AMI template](#create-ami-template)
+   - [Launch instance using AMI template](#launch-instance-using-ami-template)
+   - [MongoDB AMI template](#mogodb-ami-template)
+   - [Check MongoDB AMI works](#check-mongodb-ami-works)
+   - [Add the 'app' directory to the EC2 instance](#add-the-'app'-directory-to-the-ec2-instance)
+   - [Install app](#install-app)
+   - [Make an AMI for the running app](#make-an-ami-for-the-running-app)
+
+# EC2 instances
 ### SSH key storage
 
 1. Move the appropriate file, in this case tech230.pem, containing your private SSH key provided to you by your organisation to your '.ssh' folder, located at 'C:/User/Username/.ssh'.
@@ -58,7 +80,7 @@ EC2 (Elastic Cloud 2) instance is essentially a Virtual Machine.
 
 10. On the side you can see the 'Summary' block where you can see all the configurations you have made. If you are happy with all of them then click the orange 'Launch instance' button at the bottom of the 'Summary' block.
 
-### Exploring the information
+### Exploring the EC2 instance information
 
 If you go to 'Instances' page and it will show all the instances available. You can filter them to show the runnning instances or search for the name of your instance or your instance ID. You can see important information relating to the EC2 from here and the 'Status check' should say '2/2 checks passed' or 'initializing' if it has not yet done so. Once it says '2/2 checks passed' then you should be able to login to the EC2 instance. The public IPv4 is the address people will use to access the content the EC2 instance is sharing based on the settings specified. The Private IP is used to get into the EC2 instance itself.
 
@@ -172,11 +194,17 @@ sudo systemctl enable mongodb
 4. Name it and give it details and check the settings, then click 'Create launch template' in the 'Summary' box.
 5. You can now terminate your EC2 instance.
 
+### Check MongoDB AMI works
+
+1. Launch EC2 instance from the template you created.
+2. Log in to the EC2 and type `sudo systemctl status mongodb`.
+3. If it returns active and running then you are good to go.
+
 
 ### Add the 'app' directory to the EC2 instance
 
-1. While in bash in .ssh directory: `scp -i tech230.pem -r ~/Documents/tech_230_sparta/tech230_virtualisation/tech230_app_deployment/app ubuntu@ec2-34-245-215-245.eu-west-1.compute.amazonaws.com:/home/ubuntu`
-2. Log in to the EC2 instance and us `ls` to check that the app directory tranferred over.
+1. While in bash in .ssh directory: `scp -i tech230.pem -r ~/Documents/tech_230_sparta/tech230_virtualisation/tech230_app_deployment/app ubuntu@ec2-34-245-215-245.eu-west-1.compute.amazonaws.com:/home/ubuntu` (`scp -i "~/.ssh/tech230.pem -r app ubuntu@<Insert your EC2 Public DNS here>:/home/ubuntu"` will work if you have `cd` into the folder containing the 'app' directory.)
+2. Log in to the EC2 instance and us `ls` to check that the app directory tranferred over. (Use `ssh -i "~/.ssh/tech230.pem" ubuntu@ec2-34-245-215-245.eu-west-1.compute.amazonaws.com` to log in to your EC2 if not in .ssh directory.)
 
 ### Install app
 
@@ -192,8 +220,14 @@ sudo systemctl enable mongodb
 
 ![app_in_background](app_in_bg.png)
 
-8. On AWS change the Security group to include a custom access to port 3000, for all 0.0.0.0.
+8. On AWS change the Security group to include a custom access to port 3000, for all 0.0.0.0. You can also change the SSH rule to only accept your IP.
 
 ![inbound rule](inbound_rule_3000.png)
 
 10. Use the public IP address to navigate to the deployed webpage.
+
+### Make an AMI for the running app
+
+1. While the EC2 instance for running the app is running follow the steps to create the AMI but this time create an image.
+
+2. To check it use the Public IP address in your web browser, then add ':3000' and it should show the Sparta Provisioning Test Page from the running app.
