@@ -229,5 +229,7 @@ sudo systemctl enable mongodb
 ### Make an AMI for the running app
 
 1. While the EC2 instance for running the app is running follow the steps to create the AMI but this time create an image.
-
-2. To check it use the Public IP address in your web browser, then add ':3000' and it should show the Sparta Provisioning Test Page from the running app.
+2. Launch the AMI and then log in to the EC2.
+3. `cd app`
+4. `pm2 start app.js`
+5. Check it use the Public IP address in your web browser, then add ':3000' and it should show the Sparta Provisioning Test Page from the running app.
