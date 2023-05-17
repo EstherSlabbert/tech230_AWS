@@ -110,6 +110,22 @@ press 'Enter', then 'Esc' on the next screen
 
 8. You should be able to access your Nginx webserver at the 'Public IPv4' found under 'Instance summary' on your web browser. Anyone who has the IP address and enters it into their web browser should be able to see the page, provided they have internet connection.
 
+### Provisioning with User Data
+
+When setting up your EC2 instance got to 'Advanced settings' and scroll down to the bottom and add the following code into the 'User data' block:
+`#!/bin/bash
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx`
+
+### AMI - Amazon Machine Images
+
+AMI is a template for an EC2 instance that is the same as a host system (EC2 instance) state - all files and installations and settings. It enables us to create multiple identical instances.
+
+To create an AMI the EC2 must be up and running.
+
 ### Add the 'app' directory to the EC2 instance
 
 1. While logged into your EC2 instance: `scp /Documents/tech_230_sparta/tech230_virtualisation/tech230_app_deployment/app ubuntu@<EC2_Instance_IP>:/home/ubuntu` OR `sudo apt install rsync` then `rsync -avz -e "ssh -i /.ssh/tech230.pem" /Documents/tech_230_sparta/tech230_virtualisation/tech230_app_deployment/app ubuntu@<EC2_Instance_IP>:/home/ubuntu`
