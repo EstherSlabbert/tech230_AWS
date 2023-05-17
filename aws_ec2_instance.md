@@ -126,7 +126,23 @@ sudo systemctl enable nginx
 
 AMI is a template for an EC2 instance that is the same as a host system (EC2 instance) state - all files and installations and settings. It enables us to create multiple identical instances.
 
+### Create AMI template
+
 To create an AMI the EC2 must be up and running.
+
+1. Select the check box of the instance you would like the AMI to be based on, the click the 'Actions' drop down, then the 'Images and templates' and click on 'Create template from instance'.
+
+![create ami template](create_ami.png)
+
+2. You will be taken to the 'Create launch template' screen where you will have to name your template, in this case 'tech230_esther_nginx_ami' and you can give it a description.
+
+![name ami](ami1.png)
+
+3. Check the settings and if you are happy with them, click 'Create launch template' in the 'Summary' box.
+4. At this point you can terminate your base EC2 instance.
+5. You can then select the orange 'Launch instance' drop down and select the 'Launch instance from template' option.
+6. It will take you to a page where you can select your ami instance by its name and check the settings, which if you are happy with you can then click the orange 'Launch instance' button in the 'Summary' box.
+7. You can then go to the 'Instances' page and search for your instance. Once the 'Status check' has '2/2 checks passed' you should be able to go to the Public IP address in your terminal and it should show the nginx server page.
 
 ### Add the 'app' directory to the EC2 instance
 
