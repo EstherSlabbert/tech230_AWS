@@ -110,6 +110,11 @@ press 'Enter', then 'Esc' on the next screen
 
 8. You should be able to access your Nginx webserver at the 'Public IPv4' found under 'Instance summary' on your web browser. Anyone who has the IP address and enters it into their web browser should be able to see the page, provided they have internet connection.
 
+### Add the 'app' directory to the EC2 instance
+
+1. While logged into your EC2 instance: `scp C:\Users\super\Documents\tech_230_sparta\tech230_virtualisation\tech230_app_deployment\app ubuntu@<EC2_Instance_IP>:/home/ubuntu` OR `rsync -avz -e "ssh -i C:\Users\super\.ssh\tech230.pem" C:\Users\super\Documents\tech_230_sparta\tech230_virtualisation\tech230_app_deployment\app ubuntu@<EC2_Instance_IP>:/home/ubuntu`
+
+
 ### Stop or Terminate your EC2 instance
 
 1. Navigate back to your 'Instance summary' page and click on 'Instance state' drop down located next to 'Connect'.
