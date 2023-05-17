@@ -60,7 +60,7 @@ EC2 (Elastic Cloud 2) instance is essentially a Virtual Machine.
 
 ### Exploring the information
 
-If you go to 'Instances' page and it will show all the instances available. You can filter them to show the runnning instances or search for the name of your instance or your instance ID. You can see important information relating to the EC2 from here and the status check should say '2/2 checks passed' or 'initializing' if it has not yet done so. Once it says '2/2 checks passed' then you should be able to login to the EC2 instance. The public IPv4 is the address people will use to access the content the EC2 instance is sharing based on the settings specified. The Private IP is used to get into the EC2 instance itself.
+If you go to 'Instances' page and it will show all the instances available. You can filter them to show the runnning instances or search for the name of your instance or your instance ID. You can see important information relating to the EC2 from here and the 'Status check' should say '2/2 checks passed' or 'initializing' if it has not yet done so. Once it says '2/2 checks passed' then you should be able to login to the EC2 instance. The public IPv4 is the address people will use to access the content the EC2 instance is sharing based on the settings specified. The Private IP is used to get into the EC2 instance itself.
 
 ### Connecting to the EC2 instance
 
@@ -78,7 +78,7 @@ If you go to 'Instances' page and it will show all the instances available. You 
 
 ![connect](connect1.png)
 
-Your terminal should return if it is the first time you log in to your EC2 instance:
+Your terminal should return the following if it is the first time you log in to your EC2 instance:
 
 ![authenticate](authenticate.png)
 
@@ -110,9 +110,17 @@ press 'Enter', then 'Esc' on the next screen
 
 8. You should be able to access your Nginx webserver at the 'Public IPv4' found under 'Instance summary' on your web browser. Anyone who has the IP address and enters it into their web browser should be able to see the page, provided they have internet connection.
 
+### Stop or Terminate your EC2 instance
+
+1. Navigate back to your 'Instance summary' page and click on 'Instance state' drop down located next to 'Connect'.
+
+![Instance state](instance_state.png)
+
+2. Select 'Stop instance' to stop the instance so it can be resumed at a later stage or 'Terminate instance' to remove the instance entirely (in this case 'Terminate instance').
+
 ### Provisioning with User Data
 
-When setting up your EC2 instance got to 'Advanced settings' and scroll down to the bottom and add the following code into the 'User data' block:
+When setting up your EC2 instance got to 'Advanced settings' and scroll down to the bottom and you can add the following code into the 'User data' block for the app EC2 instance:
 ```
 #!/bin/bash
 sudo apt update -y
@@ -122,7 +130,7 @@ sudo systemctl start nginx
 sudo systemctl enable nginx
 ```
 
-### AMI - Amazon Machine Images
+## AMI - Amazon Machine Images
 
 AMI is a template for an EC2 instance that is the same as a host system (EC2 instance) state - all files and installations and settings. It enables us to create multiple identical instances.
 
@@ -146,13 +154,25 @@ To create an AMI the EC2 must be up and running.
 
 ### Add the 'app' directory to the EC2 instance
 
-1. While logged into your EC2 instance: `scp /Documents/tech_230_sparta/tech230_virtualisation/tech230_app_deployment/app ubuntu@<EC2_Instance_IP>:/home/ubuntu` OR `sudo apt install rsync` then `rsync -avz -e "ssh -i /.ssh/tech230.pem" /Documents/tech_230_sparta/tech230_virtualisation/tech230_app_deployment/app ubuntu@<EC2_Instance_IP>:/home/ubuntu`
+1. While in bash in .ssh directory: `scp -i tech230.pem -r ~/Documents/tech_230_sparta/tech230_virtualisation/tech230_app_deployment/app ubuntu@ec2-34-245-215-245.eu-west-1.compute.amazonaws.com:/home/ubuntu`
+2. Log in to the EC2 instance and us `ls` to check that the app directory tranferred over.
 
+### Install app
 
-### Stop or Terminate your EC2 instance
+1. `sudo apt update`
+2. `sudo apt install -y nodejs npm`
+3. `sudo npm install -g pm2`
+4. Use `pm2 --version` to verify pm2 installation
 
-1. Navigate back to your 'Instance summary' page and click on 'Instance state' drop down located next to 'Connect'.
+![pm2](pm2_version.png)
 
-![Instance state](instance_state.png)
+5. `cd app`
+6. `pm2 start app.js` to run the app in the background
 
-2. Select 'Stop instance' to stop the instance so it can be resumed at a later stage or 'Terminate instance' to remove the instance entirely (in this case 'Terminate instance').
+![app_in_background](app_in_bg.png)
+
+8. On AWS change the Security group to include a custom access to port 3000, for all 0.0.0.0.
+
+![inbound rule](inbound_rule_3000.png)
+
+10. Use the public IP address to navigate to the deployed webpage.
