@@ -112,7 +112,7 @@ press 'Enter', then 'Esc' on the next screen
 
 ### Add the 'app' directory to the EC2 instance
 
-1. While logged into your EC2 instance: `scp C:\Users\super\Documents\tech_230_sparta\tech230_virtualisation\tech230_app_deployment\app ubuntu@<EC2_Instance_IP>:/home/ubuntu` OR `rsync -avz -e "ssh -i C:\Users\super\.ssh\tech230.pem" C:\Users\super\Documents\tech_230_sparta\tech230_virtualisation\tech230_app_deployment\app ubuntu@<EC2_Instance_IP>:/home/ubuntu`
+1. While logged into your EC2 instance: `scp C:/Users/super/Documents/tech_230_sparta/tech230_virtualisation/tech230_app_deployment/app ubuntu@<EC2_Instance_IP>:/home/ubuntu` OR `rsync -avz -e "ssh -i C:/Users/super/.ssh/tech230.pem" C:/Users/super/Documents/tech_230_sparta/tech230_virtualisation/tech230_app_deployment/app ubuntu@<EC2_Instance_IP>:/home/ubuntu`
 
 
 ### Stop or Terminate your EC2 instance
