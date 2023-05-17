@@ -118,7 +118,7 @@ press 'Enter', then 'Esc' on the next screen
 
 2. Select 'Stop instance' to stop the instance so it can be resumed at a later stage or 'Terminate instance' to remove the instance entirely (in this case 'Terminate instance').
 
-### Provisioning with User Data
+### Provisioning Nginx with User Data
 
 When setting up your EC2 instance got to 'Advanced settings' and scroll down to the bottom and you can add the following code into the 'User data' block for the app EC2 instance:
 ```
@@ -148,9 +148,30 @@ To create an AMI the EC2 must be up and running.
 
 3. Check the settings and if you are happy with them, click 'Create launch template' in the 'Summary' box.
 4. At this point you can terminate your base EC2 instance.
-5. You can then select the orange 'Launch instance' drop down and select the 'Launch instance from template' option.
-6. It will take you to a page where you can select your ami instance by its name and check the settings, which if you are happy with you can then click the orange 'Launch instance' button in the 'Summary' box.
-7. You can then go to the 'Instances' page and search for your instance. Once the 'Status check' has '2/2 checks passed' you should be able to go to the Public IP address in your terminal and it should show the nginx server page.
+
+### Launch instance using AMI template
+
+1. You can then select the orange 'Launch instance' drop down and select the 'Launch instance from template' option.
+2. It will take you to a page where you can select your ami instance by its name and check the settings, which if you are happy with you can then click the orange 'Launch instance' button in the 'Summary' box.
+3. You can then go to the 'Instances' page and search for your instance. Once the 'Status check' has '2/2 checks passed' you should be able to log in to your instance or see the provisioned web page using the Public IP if it is the Nginx AMI template.
+
+### MongoDB AMI template
+
+1. Create an EC2 instance and add the following to the 'User data' in the 'Advanced settings' section:
+```
+#!/bin/bash
+sudo apt update
+sudo apt upgrade -y
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927
+sudo apt install -y mongodb
+sudo systemctl start mongodb
+sudo systemctl enable mongodb
+```
+2. Launch your EC2 instance.
+3. Create an AMI template by selecting your EC2 instance on AWS and click the 'Actions' drop down, then the 'Images and templates' and click on 'Create template from instance'.
+4. Name it and give it details and check the settings, then click 'Create launch template' in the 'Summary' box.
+5. You can now terminate your EC2 instance.
+
 
 ### Add the 'app' directory to the EC2 instance
 
