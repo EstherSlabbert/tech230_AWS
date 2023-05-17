@@ -1,6 +1,6 @@
 # AWS EC2 instances and AMIs
 
-# Table of contents
+## Table of contents
 - [Table of Contents](#table-of-contents)
 - [EC2 instances](#ec2-instances)
   - [SSH key storage](#ssh-key-storage)
@@ -20,6 +20,7 @@
    - [Add the 'app' directory to the EC2 instance](#add-the-'app'-directory-to-the-ec2-instance)
    - [Install app](#install-app)
    - [Make an AMI for the running app](#make-an-ami-for-the-running-app)
+   - [Link the posts page](#link-the-posts-page)
 
 # EC2 instances
 ### SSH key storage
@@ -231,5 +232,11 @@ sudo systemctl enable mongodb
 1. While the EC2 instance for running the app is running follow the steps to create the AMI but this time create an image.
 2. Launch the AMI and then log in to the EC2.
 3. `cd app`
-4. `pm2 start app.js`
+4. Run the app with: `pm2 start app.js`
 5. Check it use the Public IP address in your web browser, then add ':3000' and it should show the Sparta Provisioning Test Page from the running app.
+
+### Link the posts page
+
+Add rules to MongoDB EC2 instance so that the App EC2 instance can connect with it.
+
+Configure the appropriate default files. Change environment variable to have the IP of the MongoDB EC2 instance.
