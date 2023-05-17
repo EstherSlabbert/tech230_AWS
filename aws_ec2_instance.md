@@ -113,12 +113,14 @@ press 'Enter', then 'Esc' on the next screen
 ### Provisioning with User Data
 
 When setting up your EC2 instance got to 'Advanced settings' and scroll down to the bottom and add the following code into the 'User data' block:
-`#!/bin/bash
+```
+#!/bin/bash
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt install nginx -y
 sudo systemctl start nginx
-sudo systemctl enable nginx`
+sudo systemctl enable nginx
+```
 
 ### AMI - Amazon Machine Images
 
