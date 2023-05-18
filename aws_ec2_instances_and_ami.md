@@ -33,7 +33,7 @@ Your Login details must be kept confidential!
 1. Use the provided details to login to AWS at [AWS DevOps login page](https://sparta-devops.signin.aws.amazon.com/console).
 2. Ensure your region is the correct one. At Sparta we use 'Europe (Ireland) eu-west-1'.
 
-![Region](select_region.png)
+![Region](/images/select_region.png)
 
 ### Create EC2 instance
 
@@ -41,41 +41,41 @@ EC2 (Elastic Cloud 2) instance is essentially a Virtual Machine.
 
 1. Search for EC2 in the search bar and select EC2.
 
-![EC2](select_EC2.png)
+![EC2](/images/select_EC2.png)
 
 2. Scroll down and click on the orange 'Launch instance' and select 'Launch instance' from the drop down.
 
-![EC2 launch](launch_ec2.png)
+![EC2 launch](/images/launch_ec2.png)
 
 3. Name the instance according to good practice naming conventions for your organisation. Sparta follows this format: group, name, type of instance/resource (eg. tech230_esther_first_ec2)
 
-![Name](name_instance.png)
+![Name](/images/name_instance.png)
 
 4. Scroll down and select the 'Quick Start' menu and select the OS you want and configure it with the settings you select. In this case: Ubuntu Server 22.04 etc. as shown in the image below.
 
-![Quick Start](quick_start.png)
+![Quick Start](/images/quick_start.png)
 
 5. Scroll further and select the 'Instance type' shown below.  This, essentially, tells us how much hardware we need. (Note: We use t2.micro for all instances unless specifically told otherwise.)
 
-![Instance type](instance_type.png)
+![Instance type](/images/instance_type.png)
 
 6. Scroll down to 'Key pair (login)' and select the appropriate one, in this case 'tech230'.
 
-![key login](key_login.png)
+![key login](/images/key_login.png)
 
 7. Scroll down to 'Network Settings' and click 'edit'. Then add a name, in this case 'tech230_esther_first_sg', and a description, in this case 'my first security group'.
 
-![network settings](network_settings1.png)
+![network settings](/images/network_settings1.png)
 
-![network name](network_settings2.png)
+![network name](/images/network_settings2.png)
 
 8. Scroll down to the 'Security Group' section - this is where you customise who can access your EC2 instance.
 
-![SG](security_group.png)
+![SG](/images/security_group.png)
 
 9. Scroll down to 'Configure storage', where you can add more or less storage to your instance.
 
-![Storage](storage.png)
+![Storage](/images/storage.png)
 
 ### Launch EC2 instance
 
@@ -89,21 +89,21 @@ If you go to 'Instances' page and it will show all the instances available. You 
 
 11. Find your instance on the 'Instances' page and click on the blue 'Instance ID'.
 
-![EC2 instance info](private_ip.png)
+![EC2 instance info](/images/private_ip.png)
 
 12. Click on the 'Connect' button on that page.
 
-![Connect instance](connect_instance.png)
+![Connect instance](/images/connect_instance.png)
 
 13. Ensure you select the 'SSH client'. It gives you instructions to connect, which I will outline in the next steps.
 14. Open your terminal and cd into your '.ssh' directory, then enter `chmod 400 tech230.pem`, which allows reading privileges for all. It should not return anything. (Note: to see the permissions type `ls -l`)
 15. Copy the generated code under 'Example' and paste it into your terminal and enter. (Breakdown command: `ssh i-` uses ssh protocol, i=identity; `"tech230.pem"` which is how we are gaining ssh access; `ubuntu` is the username that it should provide, if not change it before entering; `@ec2` followed by the relevant IP address; then followed by the data center)
 
-![connect](connect1.png)
+![connect](/images/connect1.png)
 
 Your terminal should return the following if it is the first time you log in to your EC2 instance:
 
-![authenticate](authenticate.png)
+![authenticate](/images/authenticate.png)
 
 Which you should then type `yes` and enter to authenticate your connection. This should return that it has permanently added the host and log you in to the EC2 instance in the cloud.
 
@@ -113,23 +113,23 @@ Which you should then type `yes` and enter to authenticate your connection. This
 
 (Note: If you get a pink screen about kernel upgrade 
 
-![Kernel error](error_kernel.png)
+![Kernel error](/images/error_kernel.png)
 
 press 'Enter', then 'Esc' on the next screen
 
-![2nd error page](error_kernel2.png).)
+![2nd error page](/images/error_kernel2.png).
 
 2. Run `sudo apt install nginx -y` to install Nginx. (If you had the error run `sudo apt get update -y` and then `sudo apt get upgrade` again at this point.)
 3. Run `sudo systemctl start nginx` and then `sudo systemctl enable nginx` to start and enable Nginx. (Note: To check the status of Nginx use `sudo systemctl status nginx` which should show that it is active and running and hit 'q' to exit back to where you can type.)
 4. Navigate back to your 'Instance summary' page on your web browser and scroll down and select the 'Security' tab.
 
-![Security Tab](security_tab.png)
+![Security Tab](/images/security_tab.png)
 
 5. Click on the blue link under 'Security groups' above the 'Inbound rules' section.
 6. Scroll down and click 'Edit inbound rules'.
 7. Click 'Add rule' and configure it to be 'Type' 'HTTP' with a '0.0.0.0/0' 'Source' so everyone can access it.
 
-![add rule](add_rule_fin.png)
+![add rule](/images/add_rule_fin.png)
 
 8. You should be able to access your Nginx webserver at the 'Public IPv4' found under 'Instance summary' on your web browser. Anyone who has the IP address and enters it into their web browser should be able to see the page, provided they have internet connection.
 
@@ -137,7 +137,7 @@ press 'Enter', then 'Esc' on the next screen
 
 1. Navigate back to your 'Instance summary' page and click on 'Instance state' drop down located next to 'Connect'.
 
-![Instance state](instance_state.png)
+![Instance state](/images/instance_state.png)
 
 2. Select 'Stop instance' to stop the instance so it can be resumed at a later stage or 'Terminate instance' to remove the instance entirely (in this case 'Terminate instance').
 
@@ -163,11 +163,11 @@ To create an AMI the EC2 must be up and running.
 
 1. Select the check box of the instance you would like the AMI to be based on, the click the 'Actions' drop down, then the 'Images and templates' and click on 'Create template from instance'.
 
-![create ami template](create_ami.png)
+![create ami template](/images/create_ami.png)
 
 2. You will be taken to the 'Create launch template' screen where you will have to name your template, in this case 'tech230_esther_nginx_ami' and you can give it a description.
 
-![name ami](ami1.png)
+![name ami](/images/ami1.png)
 
 3. Check the settings and if you are happy with them, click 'Create launch template' in the 'Summary' box.
 4. At this point you can terminate your base EC2 instance.
@@ -214,16 +214,16 @@ sudo systemctl enable mongodb
 3. `sudo npm install -g pm2`
 4. Use `pm2 --version` to verify pm2 installation
 
-![pm2](pm2_version.png)
+![pm2](/images/pm2_version.png)
 
 5. `cd app`
 6. `pm2 start app.js` to run the app in the background
 
-![app_in_background](app_in_bg.png)
+![app_in_background](/images/app_in_bg.png)
 
 8. On AWS change the Security group to include a custom access to port 3000, for all 0.0.0.0. You can also change the SSH rule to only accept your IP.
 
-![inbound rule](inbound_rule_3000.png)
+![inbound rule](/images/inbound_rule_3000.png)
 
 10. Use the public IP address to navigate to the deployed webpage.
 
