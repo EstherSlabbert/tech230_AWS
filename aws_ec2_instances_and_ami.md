@@ -237,6 +237,18 @@ sudo systemctl enable mongodb
 
 ### Link the posts page
 
-Add rules to MongoDB EC2 instance so that the App EC2 instance can connect with it.
+Change security groups:
+
+Add inbound rules to MongoDB EC2 instance so that the App EC2 instance can connect with it. (port 27017 for MongoDB)
+
+Add inbound rules to App EC2 instance so that it can connect with the MongoDB EC2 instance.
 
 Configure the appropriate default files. Change environment variable to have the IP of the MongoDB EC2 instance.
+```
+sudo nano /etc/mongod.conf
+```
+```
+sudo nano .bashrc
+export DB_HOST=mongodb://192.168.10.150:27017/posts
+source .bashrc
+```
