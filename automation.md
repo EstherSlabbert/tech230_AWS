@@ -73,8 +73,13 @@ source .bashrc
 # Installs git
 sudo apt install git
 
-# Moves app directory from GitHub to EC2 or VM
-git clone https://github.com/EstherSlabbert/tech230_AWS/tree/main/app # still working on this
+# Moves app directory from GitHub to EC2 or VM if not already there
+if [ -d "/home/ubuntu/app" ]; then
+    echo "App folder already exists."
+else
+    echo "Cloning app folder..."
+    git clone https://github.com/EstherSlabbert/tech230_AWS/tree/main/app /home/ubuntu/app
+fi
 
 # Installations
 # gets sources list that could potentially be needed for the following installations
