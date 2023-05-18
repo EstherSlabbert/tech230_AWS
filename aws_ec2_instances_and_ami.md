@@ -269,6 +269,7 @@ node seeds/seed.js
 pm2 start app.js
 ```
 Alternatively add the DB_HOST with `export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts` - this will not be permanent (use `printenv DB_HOST` to check it took).
+To check if the app is running use `pm2 status`.
 If your app had previously been running use `pm2 stop app` to stop app try `pm2 start app.js --update-env`.
 Check nginx status `sudo systemctl status nginx`, nodejs `nodejs --version` and pm2 `pm2 --version`.
 Go to the <Public IP address>:3000/posts and you should see the page
