@@ -281,5 +281,5 @@ To check if the app is running use `pm2 status`.
 If your app had previously been running use `pm2 stop app` to stop app, then try `pm2 start app.js --update-env` to run it with the changes to the environment vairables.
 To check what is working use these commands: Nginx status `sudo systemctl status nginx`, Nodejs `nodejs --version` and pm2 `pm2 --version`.
 
-5. If you followed all the steps go to the {Insert the App EC2 Public IP address here}:3000/posts and you should see the Sparta App page with the populated data.
+5. If you followed all the steps go to the {Insert the App EC2 Public IP address here}:3000/posts page in your web browser and you should see the Sparta App page with the populated data.
 
