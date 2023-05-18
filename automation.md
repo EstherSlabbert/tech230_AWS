@@ -12,6 +12,8 @@ When automating scripts you want idempotent, meaning the script should work no m
 
 ## App script
 
+Note that this is a script for Ubuntu 20.04.
+
 ```shell
 #!/bin/bash
 
@@ -106,7 +108,8 @@ pm2 start app
 
 ## Database script on start up
 
-I have not tested this yet.
+Note that this is a script for Ubuntu 20.04.
+**I have not tested this yet.**
 
 ```shell
 #!/bin/bash
@@ -121,7 +124,7 @@ sudo apt upgrade -y
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927
 
 # Adds a software repository entry to MongoDB in the APT package manager on Ubuntu
-echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+# echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 
 # gets sources list that could potentially be needed for the following installations
 sudo apt update -y
