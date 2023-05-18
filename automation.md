@@ -70,6 +70,7 @@ echo 'export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts' >> /home
 # Executes the updated commands in .bashrc
 source .bashrc
 
+# Gets app directory
 # Installs git
 sudo apt install git
 
@@ -91,19 +92,21 @@ sudo apt install -y nodejs npm
 # installs pm2
 sudo npm install -g pm2
 
-# Run app
+# Runs app
 # Stops app if already running
 pm2 stop app
 
 # Navigates into the folder containing the app
 cd /home/ubuntu/app
 
-# Runs/Starts the app
+# Runs/Starts the app in the background
 pm2 start app
 
 ```
 
 ## Database script on start up
+
+I have not tested this yet.
 
 ```shell
 #!/bin/bash
