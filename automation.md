@@ -70,6 +70,12 @@ echo 'export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts' >> /home
 # Executes the updated commands in .bashrc
 source .bashrc
 
+# Installs git
+sudo apt install git
+
+# Moves app directory from GitHub to EC2 or VM
+git clone https://github.com/EstherSlabbert/tech230_AWS/tree/main/app # still working on this
+
 # Installations
 # gets sources list that could potentially be needed for the following installations
 sudo apt update
