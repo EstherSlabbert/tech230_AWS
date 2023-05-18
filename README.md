@@ -85,13 +85,13 @@ Amazon Web Services (AWS) was launched by Amazon.com in 2006, after the company 
 
 - **Software as a Service (SaaS)**: SaaS provides you with a complete product that is run and managed by the service provider. In most cases, people referring to SaaS are referring to end-user applications (such as web-based email). With a SaaS offering, you don’t have to think about how the service is maintained or how the underlying infrastructure is managed. You only need to think about how you will use that particular software.
 
-![Cloud Computing Models diagram](Cloud_models.png) <!-- https://s7280.pcdn.co/wp-content/uploads/2020/08/cloud-comparison.jpg.optimal.jpg -->
+![Cloud Computing Models diagram](/images/Cloud_models.png) <!-- https://s7280.pcdn.co/wp-content/uploads/2020/08/cloud-comparison.jpg.optimal.jpg -->
 
 ## What is the difference between public cloud, hybrid cloud and private cloud?
 
 The three primary cloud deployment models:
 
-![Cloud Types](cloud_types.png) <!-- https://miro.medium.com/v2/resize:fit:1066/1*LRFaWc35HsUyKikmrzD9qw.png -->
+![Cloud Types](/images/cloud_types.png) <!-- https://miro.medium.com/v2/resize:fit:1066/1*LRFaWc35HsUyKikmrzD9qw.png -->
 
 **Public cloud**: Public cloud refers to a cloud computing model in which services are delivered over the internet by third-party cloud service providers such as AWS, Google Cloud, and Microsoft Azure. The **infrastructure is shared by multiple organizations** and the cloud provider manages the hardware, software, and other infrastructure components.
 
@@ -103,7 +103,7 @@ In summary, public cloud is the most widely used deployment model, private cloud
 
 ## What types of industry/business use the different types of cloud? (e.g. who uses a private cloud?)
 
-![Cloud model comparison](cloud-comparison.jpg)
+![Cloud model comparison](/images/cloud-comparison.jpg)
 
 Public cloud: Public cloud is best suited for businesses that have variable demands and want to scale their infrastructure quickly. This type of cloud computing is suitable for startups, small businesses, and companies that need to host non-critical applications or services. Examples of public cloud providers include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform.
 
