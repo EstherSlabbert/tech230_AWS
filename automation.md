@@ -15,18 +15,21 @@ When automating scripts you want idempotent, meaning the script should work no m
 ```shell
 #!/bin/bash
 
+# Updates
 # Update the sources list
 sudo apt update -y
 
 # Upgrade any available packages
 sudo apt upgrade -y
 
+# Nginx
 # Installs Nginx
 sudo apt install nginx -y
 
 # Enables Nginx to run on start up of API or VM
 sudo systemctl enable nginx
 
+# Nginx Reverse Proxy
 # Replaces the default configurations for Nginx with the required ones for the reverse proxy for port 3000
 sudo bash -c 'cat <<EOF > /etc/nginx/sites-available/default
 server {
@@ -60,12 +63,14 @@ EOF'
 # Reloads Nginx to 
 sudo systemctl reload nginx
 
+# Set up for connection to database
 # Creates a global environment variable by adding it to the .bashrc file in order to connect to the Database
 echo 'export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts' >> /home/ubuntu/.bashrc # replace with database IP
 
 # Executes the updated commands in .bashrc
 source .bashrc
 
+# Installations
 # gets sources list that could potentially be needed for the following installations
 sudo apt update
 
@@ -75,15 +80,19 @@ sudo apt install -y nodejs npm
 # installs pm2
 sudo npm install -g pm2
 
+# Run app
+# Stops app if already running
+pm2 stop app
+
 # Navigates into the folder containing the app
 cd /home/ubuntu/app
 
 # Runs/Starts the app
-pm2 start app.js
+pm2 start app
 
 ```
 
-## Database script
+## Database script on start up
 
 ```shell
 #!/bin/bash
@@ -103,15 +112,15 @@ echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse"
 # gets sources list that could potentially be needed for the following installations
 sudo apt update -y
 
-# Installs MongoDB v3.2
-sudo apt install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20
+# Installs MongoDB
+sudo apt install -y mongodb
 
 # Replaces the bind IP in the MongoDB configuration files to allow all to access
-sudo sed -i 's/^  bindIp: 127.0.0.1/  bindIp: 0.0.0.0/g' /etc/mongod.conf
+sudo sed -i 's/^bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
 
 # Starts MongoDB service
-sudo systemctl start mongod
+sudo systemctl start mongodb
 
 # Enables MongoDB to run on start up of EC2 or VM
-sudo systemctl enable mongod
+sudo systemctl enable mongodb
 ```
