@@ -239,38 +239,47 @@ sudo systemctl enable mongodb
 
 ### Link the posts page
 
-Change security groups:
+1. Launch the AMIs for both the database and the app.
 
-Add inbound rules to MongoDB EC2 instance so that the App EC2 instance can connect with it. (port 27017 for MongoDB)
+2. Change security groups:
 
-Add inbound rules to App EC2 instance so that it can connect with the MongoDB EC2 instance. 
+- Add inbound rules to MongoDB EC2 instance so that the App EC2 instance can connect with it. (port 27017 for MongoDB)
 
-Configure the appropriate default files. Change environment variable to have the IP of the MongoDB EC2 instance.
+- Add inbound rules to App EC2 instance so that it can connect with the MongoDB EC2 instance. 
 
-```
+3. Connect/login to both EC2 instances using the SSH method.
+
+4. Configure the appropriate default files and add the relevant environment variables.
+
+To do this run the following commands in your EC2 instances:
+
+Check that MongoDB is running with `sudo systemctl status mongodb`. If it is not running follow the steps detailed earlier in this markdown to set it up before continuing.
+```bash
 # in database
 sudo sed -i 's/^bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
 sudo systemctl restart mongodb
 sudo systemctl enable mongodb
 ```
 
-Check that MongoDB is running with `sudo systemctl status mongodb`
+If Nginx is not installed and running follow the steps detailed earlier in this markdown to set it up.
+And if you use `ls` and the 'app' directory is not in the EC2 instance then follow the steps detailed earlier in this markdown to get it onto the EC2 before continuing.
 
-```
+```bash
 # in app
 echo 'export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts' >> /home/ubuntu/.bashrc # may work with either private/public IP
 source .bashrc
 sudo apt update
 sudo apt install -y nodejs npm
 sudo npm install -g pm2
-sudo systemctl reload nginx
+sudo systemctl reload nginx # optional command
 cd app
 node seeds/seed.js
 pm2 start app.js
 ```
-Alternatively add the DB_HOST with `export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts` - this will not be permanent (use `printenv DB_HOST` to check it took).
+Alternatively add the DB_HOST with `export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts` - this will not be permanent (use `printenv DB_HOST` to check it took). Then you do not have to run the echo and source commands in the block above.
 To check if the app is running use `pm2 status`.
-If your app had previously been running use `pm2 stop app` to stop app try `pm2 start app.js --update-env`.
-Check nginx status `sudo systemctl status nginx`, nodejs `nodejs --version` and pm2 `pm2 --version`.
-Go to the <Public IP address>:3000/posts and you should see the page
+If your app had previously been running use `pm2 stop app` to stop app, then try `pm2 start app.js --update-env` to run it with the changes to the environment vairables.
+To check what is working use these commands: Nginx status `sudo systemctl status nginx`, Nodejs `nodejs --version` and pm2 `pm2 --version`.
+
+5. If you followed all the steps go to the <Public IP address>:3000/posts and you should see the Sparta App page with the populated data.
 
