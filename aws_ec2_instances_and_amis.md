@@ -253,7 +253,7 @@ sudo systemctl enable mongodb
 
 To do this run the following commands in your EC2 instances:
 
-Check that MongoDB is running with `sudo systemctl status mongodb`. If it is not running follow the steps detailed earlier in this markdown to set it up before continuing.
+Check that MongoDB is running with `sudo systemctl status mongodb` on your Database EC2. If it is not running follow the steps detailed earlier in this markdown to set it up before continuing.
 ```bash
 # in database
 sudo sed -i 's/^bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
@@ -261,7 +261,7 @@ sudo systemctl restart mongodb
 sudo systemctl enable mongodb
 ```
 
-If Nginx is not installed and running follow the steps detailed earlier in this markdown to set it up.
+If Nginx is not installed and running on your App EC2 follow the steps detailed earlier in this markdown to set it up.
 And if you use `ls` and the 'app' directory is not in the EC2 instance then follow the steps detailed earlier in this markdown to get it onto the EC2 before continuing.
 
 ```bash
