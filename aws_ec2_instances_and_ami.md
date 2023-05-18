@@ -13,10 +13,10 @@
   - [Stop or Terminate your EC2 instance](#stop-or-terminate-your-ec2-instance)
   - [Provisioning Nginx with User Data](#provisioning-nginx-with-user-data)
  - [AMI - Amazon Machine Images](#ami---amazon-machine-images)
-   - [Create AMI template](#create-ami-template)
-   - [Launch instance using AMI template](#launch-instance-using-ami-template)
-   - [MongoDB AMI template](#mogodb-ami-template)
-   - [Check MongoDB AMI works](#check-mongodb-ami-works)
+   - [Create Launch template](#create-launch-template)
+   - [Launch instance using Launch template](#launch-instance-using-launch-template)
+   - [MongoDB Launch template](#mogodb-launch-template)
+   - [Check MongoDB Launch template works](#check-mongodb-launch-template-works)
    - [Add the 'app' directory to the EC2 instance](#add-the-'app'-directory-to-the-ec2-instance)
    - [Install app](#install-app)
    - [Make an AMI for the running app](#make-an-ami-for-the-running-app)
@@ -155,9 +155,11 @@ sudo systemctl enable nginx
 
 ## AMI - Amazon Machine Images
 
-AMI is a template for an EC2 instance that is the same as a host system (EC2 instance) state - all files and installations and settings. It enables us to create multiple identical instances.
+AMI is a template for an EC2 instance that is the same as a host system (EC2 instance) state - all files and installations and settings. It enables us to create multiple identical instances. Images (backup) are a snapshot of the state of the entire system. (requires storage to make)
 
-### Create AMI template
+Launch templates are the settings in creating an EC2 instance and can have some set up instructions in 'User Data'.
+
+### Create Launch template
 
 To create an AMI the EC2 must be up and running.
 
@@ -172,13 +174,13 @@ To create an AMI the EC2 must be up and running.
 3. Check the settings and if you are happy with them, click 'Create launch template' in the 'Summary' box.
 4. At this point you can terminate your base EC2 instance.
 
-### Launch instance using AMI template
+### Launch instance using Launch template
 
 1. You can then select the orange 'Launch instance' drop down and select the 'Launch instance from template' option.
 2. It will take you to a page where you can select your ami instance by its name and check the settings, which if you are happy with you can then click the orange 'Launch instance' button in the 'Summary' box.
 3. You can then go to the 'Instances' page and search for your instance. Once the 'Status check' has '2/2 checks passed' you should be able to log in to your instance or see the provisioned web page using the Public IP if it is the Nginx AMI template.
 
-### MongoDB AMI template
+### MongoDB Launch template
 
 1. Create an EC2 instance and add the following to the 'User data' in the 'Advanced settings' section:
 ```
@@ -195,7 +197,7 @@ sudo systemctl enable mongodb
 4. Name it and give it details and check the settings, then click 'Create launch template' in the 'Summary' box.
 5. You can now terminate your EC2 instance.
 
-### Check MongoDB AMI works
+### Check MongoDB Launch template works
 
 1. Launch EC2 instance from the template you created.
 2. Log in to the EC2 and type `sudo systemctl status mongodb`.
@@ -229,8 +231,8 @@ sudo systemctl enable mongodb
 
 ### Make an AMI for the running app
 
-1. While the EC2 instance for running the app is running follow the steps to create the AMI but this time create an image.
-2. Launch the AMI and then log in to the EC2.
+1. While the EC2 instance for running the app is running follow the steps to create the AMI but this time select the 'Actions' drop down and click 'Create an image' (follow the instructions and name it and give descriptions etc.).
+2. Launch the AMI from Images/AMIs OR the on the same 'Launch instance' page instead of 'Quick Start' select 'My AMIs' on AWS and then log in to the EC2.
 3. `cd app`
 4. Run the app with: `pm2 start app.js`
 5. Check it use the Public IP address in your web browser, then add ':3000' and it should show the Sparta Provisioning Test Page from the running app.
@@ -241,14 +243,33 @@ Change security groups:
 
 Add inbound rules to MongoDB EC2 instance so that the App EC2 instance can connect with it. (port 27017 for MongoDB)
 
-Add inbound rules to App EC2 instance so that it can connect with the MongoDB EC2 instance.
+Add inbound rules to App EC2 instance so that it can connect with the MongoDB EC2 instance. 
 
 Configure the appropriate default files. Change environment variable to have the IP of the MongoDB EC2 instance.
+
 ```
-sudo nano /etc/mongod.conf
+# in database
+sudo sed -i 's/^bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
+sudo systemctl restart mongodb
+sudo systemctl enable mongodb
 ```
+
+Check that MongoDB is running with `sudo systemctl status mongodb`
+
 ```
-sudo nano .bashrc
-export DB_HOST=mongodb://192.168.10.150:27017/posts
+# in app
+echo 'export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts' >> /home/ubuntu/.bashrc # may work with either private/public IP
 source .bashrc
+sudo apt update
+sudo apt install -y nodejs npm
+sudo npm install -g pm2
+sudo systemctl reload nginx
+cd app
+node seeds/seed.js
+pm2 start app.js
 ```
+Alternatively add the DB_HOST with `export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts` - this will not be permanent (use `printenv DB_HOST` to check it took).
+If your app had previously been running use `pm2 stop app` to stop app try `pm2 start app.js --update-env`.
+Check nginx status `sudo systemctl status nginx`, nodejs `nodejs --version` and pm2 `pm2 --version`.
+Go to the <Public IP address>:3000/posts and you should see the page
+
