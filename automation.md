@@ -116,14 +116,14 @@ fi
 #!/bin/bash
 
 # Runs app
-# Stops app if already running so only one thing is using the port
-pm2 stop all # stop all as pm2 is only running app
+# Stops and deletes app proccesses if already running so only one thing is using the port
+pm2 delete all # all as pm2 is only running app
 
 # seeds database
 node ~/app/seeds/seed.js
 
 # Runs/Starts the app in the background
-pm2 start ~/app/app.js
+pm2 start ~/app/app.js --update-env
 ```
 
 ## Database script on start up
@@ -171,11 +171,20 @@ sudo systemctl restart mongodb
 
 ### - App:
 ```shell
+# check the contents of current directory
+ls
+
 # check status of nginx to ensure active and running
 sudo systemctl status nginx
 
 # check if app is runnning if started with pm2
 pm2 status
+
+# stops and deletes all pm2 processes so that they cannot be restarted unless started once more
+pm2 delete all
+
+# stops all processes (can replace all with app)
+pm2 stop all
 
 # otherwise check app is running with this that check all running processes
 ps aux
@@ -186,11 +195,16 @@ sudo nano /etc/nginx/sites-available/default
 # checks nginx configuration file for syntax errors
 nginx -t
 
+# reloads nginx
+sudo systemctl reload nginx
+
 # checks if the environment variable DB_HOST is there
 printenv DB_HOST
 
 # opens .bashrc file so you can check/change the contents for your environment variable DB_HOST
 sudo nano ~/.bashrc
+# runs the .bashrc file to implement the changes
+source .bashrc
 
 # -v or --version returns the version of the specified program or an error if not installed
 # check/verify nginx installation
