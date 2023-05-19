@@ -69,7 +69,7 @@ if [ -d "/home/ubuntu/app" ]; then
     echo "App folder already exists."
 else
     echo "Cloning app folder..."
-    git clone https://github.com/EstherSlabbert/tech230_AWS/tree/main/app /home/ubuntu/app
+    git clone https://github.com/EstherSlabbert/app.git /home/ubuntu/app
 fi
 
 # Installations
