@@ -13,6 +13,7 @@ When automating scripts you want idempotent, meaning the script should work no m
 ## App script
 
 Note that this is a script for Ubuntu 20.04.
+[Nginx default configuration file contents](https://www.coderrocketfuel.com/article/default-nginx-configuration-file-inside-sites-available-default)
 
 ```shell
 #!/bin/bash
