@@ -15,7 +15,7 @@
  - [AMI - Amazon Machine Images](#ami---amazon-machine-images)
    - [Create Launch template](#create-launch-template)
    - [Launch instance using Launch template](#launch-instance-using-launch-template)
-   - [MongoDB Launch template](#mogodb-launch-template)
+   - [MongoDB Launch template](#mongodb-launch-template)
    - [Check MongoDB Launch template works](#check-mongodb-launch-template-works)
    - [Add the 'app' directory to the EC2 instance](#add-the-'app'-directory-to-the-ec2-instance)
    - [Install app](#install-app)
