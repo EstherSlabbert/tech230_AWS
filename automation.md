@@ -35,7 +35,8 @@ sudo systemctl enable nginx
 
 # Nginx Reverse Proxy
 # Replaces the default configurations for Nginx with the required ones for the reverse proxy for port 3000
-<<COMMENT sudo bash -c 'cat <<EOF > /etc/nginx/sites-available/default
+<<COMMENT
+sudo bash -c 'cat <<EOF > /etc/nginx/sites-available/default
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
