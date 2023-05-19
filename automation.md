@@ -77,7 +77,7 @@ sudo systemctl restart nginx
 ```
 
 - Adds/replaces DB_HOST environment variable to link the database and the app VMs:
-**NB**: Replace the '<Place MongoDB EC2 IP here>' with the actual IP of the database
+**NB**: Replace the '\<Place MongoDB EC2 IP here\>' with the actual IP of the database
 ```shell
 #!/bin/bash
 
