@@ -84,23 +84,23 @@ fi
 
 # Installations
 # gets sources list that could potentially be needed for the following installations
-sudo apt update
+#sudo apt update
 
 # installs node.js and npm
-sudo apt install -y nodejs npm
+#sudo apt install -y nodejs npm
 
 # installs pm2
-sudo npm install -g pm2
+#sudo npm install -g pm2
 
 # Runs app
 # Stops app if already running so only one thing is using the port
 pm2 stop all # stop all as pm2 is only running app
 
-# Navigates into the folder containing the app
-cd /home/ubuntu/app
+# seed database
+node ~/app/seeds/seed.js
 
 # Runs/Starts the app in the background
-pm2 start app.js
+pm2 start ~/app/app.js
 
 ```
 
