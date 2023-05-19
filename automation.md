@@ -73,7 +73,7 @@ if [ -d "/home/ubuntu/app" ]; then
     echo "App folder already exists."
 else
     echo "Cloning app folder..."
-    git clone https://github.com/EstherSlabbert/app.git /home/ubuntu/app
+    git clone https://github.com/EstherSlabbert/app.git /home/ubuntu
 fi
 
 # Installations
@@ -88,7 +88,7 @@ sudo npm install -g pm2
 
 # Runs app
 # Stops app if already running so only one thing is using the port
-pm2 stop app
+pm2 stop all # stop all as pm2 is only running app
 
 # Navigates into the folder containing the app
 cd /home/ubuntu/app
