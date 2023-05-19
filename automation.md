@@ -20,6 +20,7 @@ Note that this is a script for Ubuntu 20.04.
 #!/bin/bash
 
 # Updates
+
 # Update the sources list
 sudo apt update -y
 
@@ -35,7 +36,7 @@ sudo apt update
 sudo apt install nginx -y
 
 # Installs git
-sudo apt install git
+sudo apt install git -y
 
 # installs node.js and npm
 sudo apt install -y nodejs npm
@@ -165,3 +166,67 @@ sudo sed -i 's/^bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
 # restart (stops and then starts again) mongoDB
 sudo systemctl restart mongodb
 ```
+
+## Commands/actions to check everything is running as it should
+
+### - App:
+```shell
+# check status of nginx to ensure active and running
+sudo systemctl status nginx
+
+# check if app is runnning if started with pm2
+pm2 status
+
+# otherwise check app is running with this that check all running processes
+ps aux
+
+# opens configuration file for nginx so you can check/change the contents for your server location for the reverse proxy
+sudo nano /etc/nginx/sites-available/default
+
+# checks nginx configuration file for syntax errors
+nginx -t
+
+# checks if the environment variable DB_HOST is there
+printenv DB_HOST
+
+# opens .bashrc file so you can check/change the contents for your environment variable DB_HOST
+sudo nano ~/.bashrc
+
+# -v or --version returns the version of the specified program or an error if not installed
+# check/verify nginx installation
+nginx -v
+
+# check/verify git installation
+git --version
+
+# check/verify nodejs installation
+node --version
+
+# check/verify npm (node package manager) installation
+npm --version
+
+# check/verify pm2 installation
+pm2 --version
+```
+Ensure your security group allows for access to port 3000.
+
+### - Database:
+```shell
+# check if MongoDB is active & running
+sudo systemctl status mongodb
+
+# look at .conf file to check the bindIP has been changed to 0.0.0.0
+sudo nano /etc/mongodb.conf
+
+# reload (starts again with updated configurations) mongoDB
+sudo systemctl reload mongodb
+```
+Ensure your security group allows access to port 27017.
+
+### - When logging in:
+
+Check the ssh command follows this format: `ssh -i "~/.ssh/tech230.pem" ubuntu@ec2-IP-address-here.eu-west-1.compute.amazonaws.com`.
+
+### - When copying files/folders over:
+
+Check that you follow this format: `scp -i "~/.ssh/tech230.pem" -r "~/path/to/file" ubuntu@ec2-IP-address-here.eu-west-1.compute.amazonaws.com:/home/ubuntu`
