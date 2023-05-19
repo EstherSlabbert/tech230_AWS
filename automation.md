@@ -48,17 +48,21 @@ server {
 EOF'
 
 # Alternatively just replace the relevant line:
-sudo sed -i 's/^                try_files $uri $uri\/ =404;/            proxy_pass http:\/\/localhost:3000\//g' /etc/nginx/sites-available/default
+sudo sed -i 's/^                try_files $uri $uri\/ =404;/            proxy_pass http:\/\/localhost:3000\/;/g' /etc/nginx/sites-available/default
+# -i = in-place-editing; s/^ = substitute from the start of the line that has the following in
 
 # Reloads Nginx to 
 sudo systemctl reload nginx
 
 # Set up for connection to database
 # Creates a global environment variable by adding it to the .bashrc file in order to connect to the Database
-echo 'export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts' >> /home/ubuntu/.bashrc # replace with database IP
+# echo 'export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts' >> /home/ubuntu/.bashrc # replace with database IP
 
 # Executes the updated commands in .bashrc
-source .bashrc
+# source .bashrc
+
+# temporary environment variable
+export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts # replace with database IP
 
 # Gets app directory
 # Installs git
@@ -90,7 +94,7 @@ pm2 stop app
 cd /home/ubuntu/app
 
 # Runs/Starts the app in the background
-pm2 start app
+pm2 start app.js
 
 ```
 
