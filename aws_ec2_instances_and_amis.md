@@ -17,7 +17,7 @@
    - [Launch instance using Launch template](#launch-instance-using-launch-template)
    - [MongoDB Launch template](#mongodb-launch-template)
    - [Check MongoDB Launch template works](#check-mongodb-launch-template-works)
-   - [Add the 'app' directory to the EC2 instance](#add-the-'app'-directory-to-the-ec2-instance)
+   - [Add app directory to the EC2 instance](#add-app-directory-to-the-ec2-instance)
    - [Install app](#install-app)
    - [Make an AMI for the running app](#make-an-ami-for-the-running-app)
    - [Link the posts page](#link-the-posts-page)
@@ -204,7 +204,7 @@ sudo systemctl enable mongodb
 3. If it returns active and running then you are good to go.
 
 
-### Add the 'app' directory to the EC2 instance
+### Add app directory to the EC2 instance
 
 1. While in bash in .ssh directory: `scp -i tech230.pem -r ~/Documents/tech_230_sparta/tech230_virtualisation/tech230_app_deployment/app ubuntu@ec2-34-245-215-245.eu-west-1.compute.amazonaws.com:/home/ubuntu` (`scp -i "~/.ssh/tech230.pem -r app ubuntu@<Insert your EC2 Public DNS here>:/home/ubuntu"` will work if you have `cd` into the folder containing the 'app' directory.)
 2. Log in to the EC2 instance and us `ls` to check that the app directory tranferred over. (Use `ssh -i "~/.ssh/tech230.pem" ubuntu@ec2-34-245-215-245.eu-west-1.compute.amazonaws.com` to log in to your EC2 if not in .ssh directory.)
