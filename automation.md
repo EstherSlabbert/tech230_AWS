@@ -53,9 +53,6 @@ COMMENT
 sudo sed -i 's/^                try_files $uri $uri\/ =404;/            proxy_pass http:\/\/localhost:3000\/;/g' /etc/nginx/sites-available/default
 # -i = in-place-editing; s/^ = substitute from the start of the line that has the following in
 
-# Reloads Nginx to 
-# sudo systemctl reload nginx
-
 # Restarts Nginx
 sudo systemctl restart nginx
 ```
@@ -72,7 +69,7 @@ source .bashrc
 
 # Gets app directory
 # Installs git
-# sudo apt install git
+#sudo apt install git
 
 # Moves app directory from GitHub to EC2 or VM if not already there
 if [ -d "/home/ubuntu/app" ]; then
@@ -128,9 +125,6 @@ Note that this is a script for Ubuntu 20.04.
 
 # Replaces the bind IP in the MongoDB configuration files to allow all to access
 sudo sed -i 's/^bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
-
-# reload (does not stop, but initiates changes to config) MongoDB - script gave error
-#sudo systemctl reload mongodb
 
 # restart (stops and then starts again) mongoDB
 sudo systemctl restart mongodb
