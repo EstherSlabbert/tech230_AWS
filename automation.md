@@ -48,7 +48,7 @@ server {
 EOF'
 
 # Alternatively just replace the relevant line:
-sudo sed -i 's/^        try_files $uri $uri/ =404;/        proxy_pass http://localhost:3000/;/g' /etc/nginx/sites-available/default
+sudo sed -i 's/^                try_files $uri $uri\/ =404;/            proxy_pass http:\/\/localhost:3000\//g' /etc/nginx/sites-available/default
 
 # Reloads Nginx to 
 sudo systemctl reload nginx
