@@ -48,7 +48,7 @@ server {
 EOF'
 
 # Alternatively just replace the relevant line:
-sudo sed -i 's/^        try_files $uri $uri/ =404;/     proxy_pass http://localhost:3000/;/g' /etc/nginx/sites-available/default
+sudo sed -i 's/^        try_files $uri $uri/ =404;/        proxy_pass http://localhost:3000/;/g' /etc/nginx/sites-available/default
 
 # Reloads Nginx to 
 sudo systemctl reload nginx
@@ -83,7 +83,7 @@ sudo apt install -y nodejs npm
 sudo npm install -g pm2
 
 # Runs app
-# Stops app if already running
+# Stops app if already running so only one thing is using the port
 pm2 stop app
 
 # Navigates into the folder containing the app
