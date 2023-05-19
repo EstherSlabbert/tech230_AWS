@@ -15,6 +15,7 @@ When automating scripts you want idempotent, meaning the script should work no m
 Note that this is a script for Ubuntu 20.04.
 [Nginx default configuration file contents](https://www.coderrocketfuel.com/article/default-nginx-configuration-file-inside-sites-available-default)
 
+Nginx Reverse Proxy
 ```shell
 #!/bin/bash
 
@@ -34,7 +35,7 @@ sudo systemctl enable nginx
 
 # Nginx Reverse Proxy
 # Replaces the default configurations for Nginx with the required ones for the reverse proxy for port 3000
-sudo bash -c 'cat <<EOF > /etc/nginx/sites-available/default
+<<COMMENT sudo bash -c 'cat <<EOF > /etc/nginx/sites-available/default
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
@@ -46,23 +47,28 @@ server {
     }
 }
 EOF'
+COMMENT
 
 # Alternatively just replace the relevant line:
 sudo sed -i 's/^                try_files $uri $uri\/ =404;/            proxy_pass http:\/\/localhost:3000\/;/g' /etc/nginx/sites-available/default
 # -i = in-place-editing; s/^ = substitute from the start of the line that has the following in
 
 # Reloads Nginx to 
-sudo systemctl reload nginx
+# sudo systemctl reload nginx
+
+# Restarts Nginx
+sudo systemctl restart nginx
+```
+Running app:
+```shell
+#!/bin/bash
 
 # Set up for connection to database
-# Creates a global environment variable by adding it to the .bashrc file in order to connect to the Database
-# echo 'export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts' >> /home/ubuntu/.bashrc # replace with database IP
+# 'grep -qxF' checks if DB_HOST already in file otherwise creates a global environment variable by adding it to the .bashrc file in order to connect to the Database
+grep -qxF 'export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts' ~/.bashrc || echo 'export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts' >> ~/.bashrc # Remember to replace with database IP
 
 # Executes the updated commands in .bashrc
-# source .bashrc
-
-# temporary environment variable
-export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts # replace with database IP
+source .bashrc
 
 # Gets app directory
 # Installs git
@@ -73,7 +79,7 @@ if [ -d "/home/ubuntu/app" ]; then
     echo "App folder already exists."
 else
     echo "Cloning app folder..."
-    git clone https://github.com/EstherSlabbert/app.git /home/ubuntu
+    git clone https://github.com/EstherSlabbert/app.git ~/app
 fi
 
 # Installations
@@ -101,35 +107,37 @@ pm2 start app.js
 ## Database script on start up
 
 Note that this is a script for Ubuntu 20.04.
-**I have not tested this yet.**
 
 ```shell
 #!/bin/bash
 
 # Updates the sources list
-sudo apt update -y
+#sudo apt update -y
 
 # Upgrades any available packages
-sudo apt upgrade -y
+#sudo apt upgrade -y
 
 # Adds a Key for MongoDB
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927
-
-# Adds a software repository entry to MongoDB in the APT package manager on Ubuntu
-# echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+#sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927
 
 # gets sources list that could potentially be needed for the following installations
-sudo apt update -y
+#sudo apt update -y
 
 # Installs MongoDB
-sudo apt install -y mongodb
+#sudo apt install -y mongodb
 
 # Replaces the bind IP in the MongoDB configuration files to allow all to access
 sudo sed -i 's/^bind_ip = 127.0.0.1/bind_ip = 0.0.0.0/g' /etc/mongodb.conf
 
+# reload (does not stop, but initiates changes to config) MongoDB - script gave error
+#sudo systemctl reload mongodb
+
+# restart (stops and then starts again) mongoDB
+sudo systemctl restart mongodb
+
 # Starts MongoDB service
-sudo systemctl start mongodb
+#sudo systemctl start mongodb
 
 # Enables MongoDB to run on start up of EC2 or VM
-sudo systemctl enable mongodb
+#sudo systemctl enable mongodb
 ```
