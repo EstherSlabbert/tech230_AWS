@@ -66,7 +66,7 @@ export DB_HOST=mongodb://<Place MongoDB EC2 IP here>:27017/posts # replace with 
 
 # Gets app directory
 # Installs git
-sudo apt install git
+# sudo apt install git
 
 # Moves app directory from GitHub to EC2 or VM if not already there
 if [ -d "/home/ubuntu/app" ]; then
