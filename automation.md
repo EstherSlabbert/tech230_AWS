@@ -107,7 +107,7 @@ if [ -d "/home/ubuntu/app" ]; then
     echo "App folder already exists."
 else
     echo "Cloning app folder..."
-    git clone https://github.com/EstherSlabbert/app.git ~/app
+    git clone https://github.com/EstherSlabbert/app.git ~/app # https://github.com/bradley-woods/app.git
 fi
 ```
 
@@ -116,8 +116,8 @@ fi
 #!/bin/bash
 
 # Runs app
-# Stops and deletes app proccesses if already running so only one thing is using the port
-pm2 delete all # all as pm2 is only running app
+# Stops app proccesses if already running so only one thing is using the port
+pm2 stop all
 
 # seeds database
 node ~/app/seeds/seed.js
