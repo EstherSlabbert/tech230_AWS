@@ -26,6 +26,8 @@ See steps here: [EC2 App](https://github.com/EstherSlabbert/tech230_AWS/blob/mai
 
 Or follow steps to automate the EC2 set up here: [EC2 App Automation](https://github.com/EstherSlabbert/tech230_AWS/blob/main/automation.md)
 
+Have Nginx, the static page for the app and the reverse proxy set up.
+
 ### Create your AMI from an EC2 instance for the app
 
 1. With your app EC2 instance up and running with your app working create an AMI.
@@ -66,7 +68,23 @@ Or follow steps to automate the EC2 set up here: [EC2 App Automation](https://gi
 
 ![Alt text](/images/lt6.png)
 
-7. You may choose to add in “User Data” under “Advanced Settings” with start up commands.
+7. You may choose to add the code below in “User Data” under “Advanced Settings” with start up commands.
+```shell
+#!/bin/bash
+
+# installs pm2
+sudo npm install pm2 -g
+
+# navigates to correct folder
+cd /home/ubuntu/app
+
+# installs app
+npm install
+
+# starts app
+pm2 start app.js
+```
+
 8. Create template by clicking on “Create launch template” once you are satisfied with your settings. You may choose to terminate your instance now.
 
 ### Create/Configure the Auto Scaling Group
@@ -83,6 +101,25 @@ Or follow steps to automate the EC2 set up here: [EC2 App Automation](https://gi
 
 ![Alt text](/images/asg3.png)
 
-4. 
+4. **Create a load balancer**. Name it and configure it for HTTP and internet-facing. Then create a target group and name it. Turn on ‘Elastic Load Balancing health checks’. Then "Next".
 
-### Create a Load Balancer
+![Alt text](/images/asg4.png)
+
+![Alt text](/images/asg5.png)
+
+![Alt text](/images/asg6.png)
+
+5. Set the group size capacities (in this case 2, 2, 3). Add a scaling policy for averaging 50% CPU usage. Then "Next".
+
+![Alt text](/images/asg7.png)
+
+![Alt text](/images/asg8.png)
+
+6. You may choose to add notifications so that you are notified when the instances are created or destroyed. We will not be adding this for now. Then "Next".
+
+7. Add a tag to identify your Auto Scaling Group.
+
+![Alt text](/images/asg9.png)
+
+8. Review and check your settings and configurations. When ready click "Create Auto Scaling group".
+9. You should be able to access the app static page from the load balancer DNS address in your browser.
