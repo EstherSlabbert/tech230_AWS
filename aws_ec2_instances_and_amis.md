@@ -1,7 +1,6 @@
 # AWS EC2 instances and AMIs
 
 ## Table of contents
-- [Table of Contents](#table-of-contents)
 - [EC2 instances](#ec2-instances)
   - [SSH key storage](#ssh-key-storage)
   - [Login to AWS](#login-to-aws)
