@@ -1,6 +1,6 @@
 # AWS and Cloud Computing
 
-This repository contains information about Cloud Computing and AWS, it has another markdown detailing how to setup an EC2 instance and an AMI and get a two-tier app running (one EC2 is the database, the other the app) with AWS which can be found here: [AWS EC2 Instances and AMIs markdown](https://github.com/EstherSlabbert/tech230_AWS/blob/main/aws_ec2_instances_and_ami.md).
+This repository contains information about Cloud Computing and AWS, it has another markdown detailing how to setup an EC2 instance and an AMI and get a two-tier app running (one EC2 is the database, the other the app) with AWS which can be found here: [AWS EC2 Instances and AMIs markdown](https://github.com/EstherSlabbert/tech230_AWS/blob/main/aws_ec2_instances_and_ami.md). And a markdown on automating the same process here: [Automation](https://github.com/EstherSlabbert/tech230_AWS/blob/main/automation.md). Also a markdown detailing S3 here: [S3](https://github.com/EstherSlabbert/tech230_AWS/blob/main/S3.md).
 
 ## What is cloud computing?
 
