@@ -6,6 +6,8 @@ Autoscaling is a cloud computing feature that enables organizations to scale clo
 
 [What is  Auto scaling?](https://avinetworks.com/glossary/auto-scaling/)
 
+Useful for managing microservices. We also do not know when demand for service changes.
+
 Auto scaling group - configures launch templates then spins up the instances. Has an autoscaling policy.
 
 Autoscale policy - Specify the launch templates. Set threshold - when it checks to make more instances (scale out), what the minimum and maximum number of instances. (Ours will be min 2, desired 2, max 3, Scales out at CPU 50%).
