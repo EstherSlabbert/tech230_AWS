@@ -38,8 +38,11 @@ sudo apt install nginx -y
 # Installs git
 sudo apt install git -y
 
-# installs node.js and npm
-sudo apt install -y nodejs npm
+# sets source to retrieve nodejs
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+
+# installs node.js
+sudo apt install -y nodejs
 
 # installs pm2
 sudo npm install -g pm2
@@ -119,11 +122,17 @@ fi
 # Stops app proccesses if already running so only one thing is using the port
 pm2 stop all
 
-# seeds database
-node ~/app/seeds/seed.js
+# navigates into the correct directory
+cd ~/app
+
+# installs app
+npm install
+
+# seeds database assuming you are connected to the database machine
+node seeds/seed.js
 
 # Runs/Starts the app in the background
-pm2 start ~/app/app.js --update-env
+pm2 start app.js --update-env
 ```
 
 ## Database script on start up
