@@ -120,3 +120,5 @@ pm2 start app.js
 
 8. Review and check your settings and configurations. When ready click "Create Auto Scaling group".
 9. You should be able to access the app static page from the load balancer DNS address in your browser.
+
+![Alt text](/images/app.png)
