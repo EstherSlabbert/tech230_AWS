@@ -72,9 +72,6 @@ Have Nginx, the static page for the app and the reverse proxy set up.
 ```shell
 #!/bin/bash
 
-# installs pm2
-sudo npm install pm2 -g
-
 # navigates to correct folder
 cd /home/ubuntu/app
 
