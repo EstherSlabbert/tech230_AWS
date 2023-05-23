@@ -102,7 +102,7 @@ pm2 start app.js
 
 8. Create template by clicking on “Create launch template” once you are satisfied with your settings. You may choose to terminate your instance now.
 
-### Create/Configure the Auto Scaling Group
+### Create/Configure the Auto Scaling Group <a id="create/configure-the-auto-scaling-group">Create/Configure the Auto Scaling Group</a>
 
 1. Navigate to Auto Scaling Groups, then click on “Create an Auto Scaling group”.
 
