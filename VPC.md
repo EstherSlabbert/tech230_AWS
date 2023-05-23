@@ -64,40 +64,71 @@ db VM should have private subnet (e.g. 10.0.3.0/24). SG: 27017. has a route tabl
 
 ### Create VPC <a id="create-vpc">Create VPC</a>
 
+Navigate to 'Your VPCs' and 'Create VPC'. Select 'VPC only', name it appropriately, manually input the IPv4 CIDR block with the desired values, then 'Create VPC'.
+
 ![Alt text](/images/vpc1.png)
+
 ![Alt text](/images/vpc2.png)
 
 ### Create Internet Gateway <a id="create-internet-gateway">Create Internet Gateway</a>
 
-![Alt text](/images/ig.png)
+Navigate to 'Internet Gateways' and 'Create internet gateway'. Name it appropriately then 'Create internet gateway'.
+
+<img src="/images/ig.png"  width="100%" height="100%">
 
 ### Connect Internet Gateway to VPC <a id="connect-internet-gateway-to-vpc">Connect Internet Gateway to VPC</a>
 
+After creating the Internet Gateway you will return to the 'Internet Gateways' page where there will be a green bar at the top, which has the button 'Attach to a VPC', click this. Search for the VPC you created and named and select it then click 'Attach internet gateway'.
+
 ![Alt text](/images/ig-vpc1.png)
-![Alt text](/images/ig-vpc2.png)
+
+<img src="/images/ig-vpc2.png"  width="100%" height="100%">
 
 ### Create public/private Subnet(s) <a id="create-public-private-subnets">Create public/private Subnet(s)</a>
 
-![Alt text](/images/sub1.png)
-![Alt text](/images/sub2.png)
+Navigate to 'Subnets' and 'Create subnet'. Name it appropriately. You may wish to select an Availability Zone, or leave it as 'No preference'. Enter an appropriate IPv4 CIDR (ensure it is different for each subnet you create). Create as many subnets as you require. Then 'Create subnet'.
+
+<img src="/images/sub1.png"  width="100%" height="100%">
+
+<img src="/images/sub2.png"  width="100%" height="100%">
 
 ### Create (public) Route Table <a id="create-public-route-table">Create (public) Route Table</a>
 
-![Alt text](/images/rt1.png)
-![Alt text](/images/rt2.png)
+Navigate to 'Route Tables' and 'Create route table'. Name it appropriately, then select the VPC you created and named, then 'Create route table'.
+
+<img src="/images/rt1.png"  width="100%" height="100%">
+
+<img src="/images/rt2.png"  width="100%" height="100%">
 
 ### Explicitly connect Subnet to Route Table <a id="explicitly-connect-subnet-to-route-table">Explicitly connect Subnet to Route Table</a>
 
-![Alt text](/images/sub-rt1.png)
-![Alt text](/images/sub-rt2.png)
+Navigate to 'Route Tables' scroll down and select the 'Subnet Associations' tab, then 'Edit Subnet Associations'. Check the subnet you want to create a link to then 'Save associations'.
+
+_Note_: Only link the public subnet (app VM's subnet) with public route table.
+
+<img src="/images/sub-rt1.png"  width="100%" height="100%">
+
+<img src="/images/sub-rt2.png"  width="100%" height="100%">
 
 ### Link Route Table to Internet Gateway <a id="link-route-table-to-internet-gateway">Link Route Table to Internet Gateway</a>
 
-![Alt text](/images/rt-ig1.png)
-![Alt text](/images/rt-ig2.png)
+Navigate to 'Route Tables' scroll down and select the 'Routes' tab, then 'Edit Routes'. Then 'Add Route' and add your Destination to '0.0.0.0/0' and your Target as your created Internet Gateway that you named appropriately.
+
+<img src="/images/rt-ig1.png"  width="100%" height="100%">
+
+<img src="/images/rt-ig2.png"  width="100%" height="100%">
 
 ### Create EC2 instance and link to VPC <a id="create-ec2-instance-and-link-to-vpc">Create EC2 instance and link to VPC</a>
 
-![Alt text](/images/ec2-nw1.png)
-![Alt text](/images/ec2-nw2.png)
-![Alt text](/images/ec2-nw3.png)
+Create EC2 instance(s) - you can use an AMI to do this - and place VM(s) in the subnet(s). (You can use User Data to set up your EC2). See information to create an EC2 instance here: [Create and EC2 instance](https://github.com/EstherSlabbert/tech230_AWS/blob/main/aws_ec2_instances_and_amis.md#create-ec2-instance).
+
+Edit network settings when creating EC2 instance. Enable assigning a public IP for the public subnet VM.
+
+_Note_: Existing Security Groups will not work with a created VPC; you must create a new Security Group with rules for the required ports and a descriptive name.
+
+<img src="/images/ec2-nw1.png"  width="100%" height="100%">
+
+<img src="/images/ec2-nw2.png"  width="100%" height="100%">
+
+<img src="/images/ec2-nw3.png"  width="100%" height="100%">
+
