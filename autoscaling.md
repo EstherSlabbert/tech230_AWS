@@ -44,6 +44,64 @@ See steps here: [EC2 App](https://github.com/EstherSlabbert/tech230_AWS/blob/mai
 
 Or follow steps to automate the EC2 set up here: [EC2 App Automation](https://github.com/EstherSlabbert/tech230_AWS/blob/main/automation.md)
 
+Or try use the following in your user data for creating your instance:
+```shell
+#!/bin/bash
+
+# Update the sources list
+sudo apt update -y
+
+# Upgrade any available packages
+sudo apt upgrade -y
+
+# navigates to home directory
+cd /home/ubuntu
+
+# gets sources list that could potentially be needed for the following installations
+sudo apt update
+
+# Installs Nginx
+sudo apt install nginx -y
+
+# Installs git
+sudo apt install git -y
+
+# sets source to retrieve nodejs
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+
+# installs node.js
+sudo apt install -y nodejs
+
+# installs pm2
+sudo npm install -g pm2
+
+# Enables Nginx to run on start up of API or VM
+sudo systemctl enable nginx
+
+# Moves app directory from GitHub to EC2 or VM if not already there
+if [ -d "/home/ubuntu/app" ]; then
+    echo "App folder already exists."
+else
+    echo "Cloning app folder..."
+    git clone https://github.com/bradley-woods/app.git /home/ubuntu/app
+fi
+
+# changes line for reverse proxy
+sudo sed -i "s/try_files \$uri \$uri\/ =404;/proxy_pass http:\/\/localhost:3000\/;/" /etc/nginx/sites-available/default
+
+# Restarts Nginx to update configuration changes
+sudo systemctl restart nginx
+
+# navigates into the correct directory
+cd /home/ubuntu/app
+
+# installs app
+npm install
+
+# Runs/Starts the app in the background
+pm2 start app.js
+```
+Ensure that your Sparta test page works.
 Have Nginx, the static page for the app and the reverse proxy set up.
 
 ### Create your AMI from an EC2 instance for the app
