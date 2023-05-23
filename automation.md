@@ -73,8 +73,8 @@ EOF'
 COMMENT
 
 # OR just replace the relevant line:
-sudo sed -i 's/^                try_files $uri $uri\/ =404;/            proxy_pass http:\/\/localhost:3000\/;/g' /etc/nginx/sites-available/default
-# -i = in-place-editing; s/^ = substitute from the start of the line that has the following in
+sudo sed -i "s/try_files \$uri \$uri\/ =404;/proxy_pass http:\/\/localhost:3000\/;/" /etc/nginx/sites-available/default
+# -i = in-place-editing; s/ = substitute from the start of the line that has the following in
 
 # Restarts Nginx to update configuration changes
 sudo systemctl restart nginx
