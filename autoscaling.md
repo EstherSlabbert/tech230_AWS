@@ -1,6 +1,12 @@
 # Autoscaling and load balancing
 
-Auto scaling, also referred to as autoscaling, auto-scaling, and sometimes automatic scaling, is a cloud computing technique for dynamically allocating computational resources. Depending on the load to a server farm or pool, the number of servers that are active will typically vary automatically as user needs fluctuate.
+## Table of Contents
+-[What is Auto scaling and Load balancing?](#what-is-auto-scaling-and-load-balancing)
+
+
+## What is Auto scaling and Load balancing?
+
+**Auto scaling**, also referred to as autoscaling, auto-scaling, and sometimes automatic scaling, is a cloud computing technique for dynamically allocating computational resources. Depending on the load to a server farm or pool, the number of servers that are active will typically vary automatically as user needs fluctuate.
 
 Autoscaling is a cloud computing feature that enables organizations to scale cloud services such as server capacities or virtual machines up or down automatically, based on defined situations such as traffic ir utilization levels. Cloud computing providers, such as Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP), offer autoscaling tools.
 
@@ -10,7 +16,13 @@ Autoscaling is a cloud computing feature that enables organizations to scale clo
 
 Auto scaling is useful for managing microservices, as we do not know when demand for service changes and by how much and auto scaling automates this tracking and provides resources needed according to the configurations layed out in the auto scale policy.
 
-Auto Scaling Group - configures launch templates then spins up the instances. Has an autoscaling policy.
+**Load balancing** is a technique used in computer networking and distributed systems to distribute incoming network traffic across multiple servers, ensuring optimal resource utilization, improved performance, and high availability. It helps to evenly distribute the workload and prevent any single server from becoming overloaded, thus enhancing the overall reliability and scalability of the system.
+
+[AWS - Load balancing](https://aws.amazon.com/what-is/load-balancing/)
+
+## Auto Scaling Group
+
+**Auto Scaling Group** - configures launch templates then spins up the instances. Has an autoscaling policy.
 
 Auto Scale Policy - Specify the launch templates. Set threshold - when it checks to make more instances (scale out), what the minimum and maximum number of instances. (Ours will be min 2, desired 2, max 3, Scales out at CPU 50%).
 
