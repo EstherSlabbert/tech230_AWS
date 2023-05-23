@@ -12,7 +12,7 @@
   - [Link Route Table to Internet Gateway](#link-route-table-to-internet-gateway)
   - [Create EC2 instance and link to VPC](#create-ec2-instance-and-link-to-vpc)
 
-## What is a VPC?
+## What is a VPC? <a id="what-is-a-vpc">What is a VPC?</a>
 
 VPC stands for Virtual Private Cloud. It is a **virtual network infrastructure provided by cloud service providers** like Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP). A VPC **allows users to create and manage their own isolated virtual network environments** within a cloud provider's infrastructure.
 
@@ -60,36 +60,36 @@ db VM should have private subnet (e.g. 10.0.3.0/24). SG: 27017. has a route tabl
 
 [SSH agent forwarding - SSH into private subnet](https://digitalcloud.training/ssh-into-ec2-in-private-subnet/#:~:text=You%20can%20SSH%20into%20EC2,located%20in%20a%20public%20subnet.)
 
-## Setting Up a VPC
+## Setting Up a VPC <a id="setting-up-a-vpc">Setting Up a VPC</a>
 
-### Create VPC
-
-![]()
-
-### Create Internet Gateway
+### Create VPC <a id="create-vpc">Create VPC</a>
 
 ![]()
 
-### Connect Internet Gateway to VPC
+### Create Internet Gateway <a id="create-internet-gateway">Create Internet Gateway</a>
 
 ![]()
 
-### Create public/private Subnet(s)
+### Connect Internet Gateway to VPC <a id="connect-internet-gateway-to-vpc">Connect Internet Gateway to VPC</a>
 
 ![]()
 
-### Create (public) Route Table
+### Create public/private Subnet(s) <a id="create-public-private-subnets">Create public/private Subnet(s)</a>
 
 ![]()
 
-### Explicitly connect Subnet to Route Table
+### Create (public) Route Table <a id="create-public-route-table">Create (public) Route Table</a>
 
 ![]()
 
-### Link Route Table to Internet Gateway
+### Explicitly connect Subnet to Route Table <a id="explicitly-connect-subnet-to-route-table">Explicitly connect Subnet to Route Table</a>
 
 ![]()
 
-### Create EC2 instance and link to VPC
+### Link Route Table to Internet Gateway <a id="link-route-table-to-internet-gateway">Link Route Table to Internet Gateway</a>
+
+![]()
+
+### Create EC2 instance and link to VPC <a id="create-ec2-instance-and-link-to-vpc">Create EC2 instance and link to VPC</a>
 
 ![]()
