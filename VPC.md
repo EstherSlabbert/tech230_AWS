@@ -1,8 +1,16 @@
 # VPC - Virtual Private Cloud
 
 ## Table of Contents
-- [What is a VPC?]()
-- [Setting up a VPC]()
+- [What is a VPC?](#what-is-a-vpc)
+- [Setting up a VPC](#setting-up-a-vpc)
+  - [Create VPC](#create-vpc)
+  - [Create Internet Gateway](#create-internet-gateway)
+  - [Connect Internet Gateway to VPC](#connect-internet-gateway-to-vpc)
+  - [Create public/private Subnet(s)](#create-public-private-subnets)
+  - [Create (public) Route Table](#create-public-route-table)
+  - [Explicitly connect Subnet to Route Table](#explicitly-connect-subnet-to-route-table)
+  - [Link Route Table to Internet Gateway](#link-route-table-to-internet-gateway)
+  - [Create EC2 instance and link to VPC](#create-ec2-instance-and-link-to-vpc)
 
 ## What is a VPC?
 
@@ -10,7 +18,7 @@ VPC stands for Virtual Private Cloud. It is a **virtual network infrastructure p
 
 When you create an AWS account it sets up a default VPC for you in every region.
 
-![Alt text](/images/vpc_overview.png)
+![Alt text](/images/vpc_overview_pic.png)
 
 Here are some key characteristics and components of an AWS VPC:
 
@@ -46,7 +54,7 @@ path to access rooms = (public) route table -> directs traffic from the internet
 door to room = security group (allows ports 80,3000,22)
 
 
-db VM should have private subnet. 10.0.3.0/24. SG: 27017. has a route table to allow communication between rooms set up by default, which we do not have permissions to change. 
+db VM should have private subnet (e.g. 10.0.3.0/24). SG: 27017. has a route table to allow communication between rooms set up by default, which we do not have permissions to change. 
 
 [AWS - What is CIDR?](https://aws.amazon.com/what-is/cidr/#:~:text=A%20CIDR%20block%20is%20a,regional%20internet%20registries%20(RIR)).
 
@@ -56,16 +64,32 @@ db VM should have private subnet. 10.0.3.0/24. SG: 27017. has a route table to a
 
 ### Create VPC
 
+![]()
+
 ### Create Internet Gateway
+
+![]()
 
 ### Connect Internet Gateway to VPC
 
+![]()
+
 ### Create public/private Subnet(s)
+
+![]()
 
 ### Create (public) Route Table
 
+![]()
+
 ### Explicitly connect Subnet to Route Table
+
+![]()
 
 ### Link Route Table to Internet Gateway
 
+![]()
+
 ### Create EC2 instance and link to VPC
+
+![]()
