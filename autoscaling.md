@@ -1,7 +1,13 @@
 # Autoscaling and load balancing
 
 ## Table of Contents
--[What is Auto scaling and Load balancing?](#what-is-auto-scaling-and-load-balancing)
+- [What is Auto scaling and Load balancing?](#what-is-auto-scaling-and-load-balancing)
+- [Auto Scaling Group](#auto-scaling-group)
+- [Steps to Creating an Auto Scaling Group](#steps-to-creating-an-auto-scaling-group)
+  - [Create EC2 instance for app](#create-ec2-instance-for-app)
+  - [Create your AMI from an EC2 instance for the app](#create-your-ami-from-an-ec2-instance-for-the-app)
+  - [Create your launch template from an AMI for the app](#create-your-launch-template-from-an-ami-for-the-app)
+  - [Create/Configure the Auto Scaling Group](#create/configure-the-auto-scaling-group)
 
 
 ## What is Auto scaling and Load balancing?
