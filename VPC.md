@@ -64,32 +64,40 @@ db VM should have private subnet (e.g. 10.0.3.0/24). SG: 27017. has a route tabl
 
 ### Create VPC <a id="create-vpc">Create VPC</a>
 
-![]()
+![Alt text](/images/vpc1.png)
+![Alt text](/images/vpc2.png)
 
 ### Create Internet Gateway <a id="create-internet-gateway">Create Internet Gateway</a>
 
-![]()
+![Alt text](/images/ig.png)
 
 ### Connect Internet Gateway to VPC <a id="connect-internet-gateway-to-vpc">Connect Internet Gateway to VPC</a>
 
-![]()
+![Alt text](/images/ig-vpc1.png)
+![Alt text](/images/ig-vpc2.png)
 
 ### Create public/private Subnet(s) <a id="create-public-private-subnets">Create public/private Subnet(s)</a>
 
-![]()
+![Alt text](/images/sub1.png)
+![Alt text](/images/sub2.png)
 
 ### Create (public) Route Table <a id="create-public-route-table">Create (public) Route Table</a>
 
-![]()
+![Alt text](/images/rt1.png)
+![Alt text](/images/rt2.png)
 
 ### Explicitly connect Subnet to Route Table <a id="explicitly-connect-subnet-to-route-table">Explicitly connect Subnet to Route Table</a>
 
-![]()
+![Alt text](/images/sub-rt1.png)
+![Alt text](/images/sub-rt2.png)
 
 ### Link Route Table to Internet Gateway <a id="link-route-table-to-internet-gateway">Link Route Table to Internet Gateway</a>
 
-![]()
+![Alt text](/images/rt-ig1.png)
+![Alt text](/images/rt-ig2.png)
 
 ### Create EC2 instance and link to VPC <a id="create-ec2-instance-and-link-to-vpc">Create EC2 instance and link to VPC</a>
 
-![]()
+![Alt text](/images/ec2-nw1.png)
+![Alt text](/images/ec2-nw2.png)
+![Alt text](/images/ec2-nw3.png)
