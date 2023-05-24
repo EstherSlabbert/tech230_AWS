@@ -2,8 +2,8 @@
 
 ## Table of Contents
 - [What is a VPC?](#what-is-a-vpc)
-  - [CIDR](#cidr)
   - [Analogy](#analogy)
+  - [CIDR](#cidr)
 - [Setting up a VPC](#setting-up-a-vpc)
   - [1. Create VPC](#create-vpc)
   - [2. Create Internet Gateway](#create-internet-gateway)
@@ -44,19 +44,20 @@ Here are some key characteristics and components of an AWS VPC:
 
 A VPC is a network that is like a secure building. It has a Private IP address, which is indicated by a CIDR block (e.g. 10.0.0.0/16), which specifies the size of the network in variable-sized blocks and allows for flexible allocation of IP addresses.
 
-The front door or gate is like the Internet Gateway, which provides a controlled point of entry and exit for traffic to and from the VPC.
+The front door or gate is like the Internet Gateway, which provides a controlled point of entry and exit for traffic to and from the VPC through the internet.
 
-The building has rooms, which are like subnets also indicated by a CIDR block, e.g. 10.0.2.0/24. (Note: public subnets still uses a private IP range, but it is classified as public because it will be accessed by a public IP at some point). There are more secure rooms like vaults which are like private subnets and less secure rooms which are like public subnets.
+From the front door there is a path to certain rooms, which is like a (public) Route Table. The Route Table directs traffic from the Internet Gateway to Subnets containing different resources (i.e. VMs, containers, servers etc.).
 
-To access the rooms that are open to the public you must go through the front door, then follow a path to 
+Subnets are like the rooms with in the building. They are also indicated by a CIDR block, e.g. 10.0.2.0/24. (Note: public subnets still uses a private IP range, but it is classified as public because it will be accessed by a public IP at some point).
+Subnets can be divided into 2 different kinds. There are more secure rooms, which are like vaults which can be compared to private subnets and less secure rooms which are like public subnets. The public subnets can be accessed following the requirements of the Internet Gateway, the Route Table and then the VM can be accessed if the Security Group, which are like the door to a room or the key to opening a box, rules are passed. The private subnets cannot be accessed by outside parties outside of some very specific conditions.
+
+AWS automatically sets up a path between subnets (rooms) within a VPC (building) also called a Route Table. We are not able to change this Route Table.
+
 Access:
-As a developer you want to access the VM in the subnet through an ssh (port 22).
-Others want to access ports (HTTP = port 80), (Sparta app port = 3000), (HTTPS = port 443) with a public ip for app vm.
+As a developer you want to access the VM in the subnet through an SSH using port 22.
+Others want to access HTTP = port 80, Sparta app port = 3000, possibly an HTTPS = port 443 with a public IP for app VM.
 
-path to access rooms = (public) route table -> directs traffic from the internet gateway to the subnet of the VM
-door to room = security group (allows ports 80,3000,22)
-
-db VM should have private subnet (e.g. 10.0.3.0/24). SG: 27017. has a route table to allow communication between rooms set up by default, which we do not have permissions to change.
+(db VM should have private subnet (e.g. 10.0.3.0/24) & SG for port 27017. app VM should have public subnet (e.g. 10.0.2.0/24) & SG for ports 80, 22 & 3000.)
 
 #### <a id="cidr">CIDR</a>
 
