@@ -147,15 +147,17 @@ See information to create an EC2 instance here: [Create and EC2 instance](https:
 2. While setting up your EC2 edit 'Network Settings':
   2.1. Select your created VPC, rather than the Default VPC.
   2.2. Enable assigning a public IP for the public subnet VM.
+    
+  <img src="/images/ec2-nw1.png"  width="60%" height="60%">
+  
   2.3. Create a Security Group with the needed rules.
+
+<img src="/images/ec2-nw2.png"  width="60%" height="60%">
+
+<img src="/images/ec2-nw3.png"  width="60%" height="60%">
 
 _Note_: Existing Security Groups will not work with a created VPC; you must create a new Security Group with rules for the required ports and a descriptive name.
 
 3. Launch your EC2 instance (VM) and you should be able to access the webserver that it is running, provided it is a public subnet that you connected your VM to.
 
-<img src="/images/ec2-nw1.png"  width="60%" height="60%">
-
-<img src="/images/ec2-nw2.png"  width="60%" height="60%">
-
-<img src="/images/ec2-nw3.png"  width="60%" height="60%">
 
