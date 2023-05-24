@@ -242,7 +242,7 @@ sudo systemctl status mongodb
 sudo nano /etc/mongodb.conf
 
 # reload (starts again with updated configurations) mongoDB
-sudo systemctl reload mongodb
+sudo systemctl restart mongodb
 ```
 Ensure your security group allows access to port 27017.
 
