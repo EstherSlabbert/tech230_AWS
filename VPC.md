@@ -2,6 +2,8 @@
 
 ## Table of Contents
 - [What is a VPC?](#what-is-a-vpc)
+  - [CIDR](#cidr)
+  - [Analogy](#analogy)
 - [Setting up a VPC](#setting-up-a-vpc)
   - [Create VPC](#create-vpc)
   - [Create Internet Gateway](#create-internet-gateway)
@@ -38,23 +40,30 @@ Here are some key characteristics and components of an AWS VPC:
 
 **Peering Connections**: VPC peering allows the connection and communication between multiple VPCs, enabling resource sharing and network connectivity between them.
 
-vpc = house
+#### Analogy
 
-Private IP address range: 10.0.0.0
-10.0.0.0/16 = CIDR block; works with bytes, gives space limits in CIDR block. /16 dictates that 10.0 = fixed; 0.0 ranges from 0-255.
+A VPC is a network that is like a secure building. It has a Private IP address, which is indicated by a CIDR block (e.g. 10.0.0.0/16), which specifies the size of the network in variable-sized blocks and allows for flexible allocation of IP addresses.
 
-rooms = public subnets (still uses a private ip range, but it is public as it will be accessed by a public ip at some point) 10.0.0.0/24 or 10.0.2.0/24 or any no.from 0-255 in the second last place.
+The front door or gate is like the Internet Gateway, which provides a controlled point of entry and exit for traffic to and from the VPC.
 
+The building has rooms, which are like subnets also indicated by a CIDR block, e.g. 10.0.2.0/24. (Note: public subnets still uses a private IP range, but it is classified as public because it will be accessed by a public IP at some point). There are more secure rooms like vaults which are like private subnets and less secure rooms which are like public subnets.
+
+To access the rooms that are open to the public you must go through the front door, then follow a path to 
 Access:
-you = ssh (port 22)
-others -> access ports (HTTP (port 80)), (3000), (HTTPS = port 443)
-with a public ip for app vm
-outer door = internet gateway
+As a developer you want to access the VM in the subnet through an ssh (port 22).
+Others want to access ports (HTTP = port 80), (Sparta app port = 3000), (HTTPS = port 443) with a public ip for app vm.
+
 path to access rooms = (public) route table -> directs traffic from the internet gateway to the subnet of the VM
 door to room = security group (allows ports 80,3000,22)
 
+db VM should have private subnet (e.g. 10.0.3.0/24). SG: 27017. has a route table to allow communication between rooms set up by default, which we do not have permissions to change.
 
-db VM should have private subnet (e.g. 10.0.3.0/24). SG: 27017. has a route table to allow communication between rooms set up by default, which we do not have permissions to change. 
+#### CIDR
+
+CIDR stands for Classless Inter-Domain Routing. A CIDR block is a notation used to define the network portion of an IP address and specify the size of the network. CIDR allows for flexible allocation of IP addresses and efficient routing by aggregating multiple IP addresses into a single block. It simplifies IP address management and enables efficient allocation of IP addresses within a network.
+
+works with bytes, gives space limits in CIDR block. /16 dictates that 10.0. = fixed; 0.0 can range from 0-255.
+10.0.0.0/24 or 10.0.2.0/24 or any no.from 0-255 in the second last place.
 
 [AWS - What is CIDR?](https://aws.amazon.com/what-is/cidr/#:~:text=A%20CIDR%20block%20is%20a,regional%20internet%20registries%20(RIR)).
 
