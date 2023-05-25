@@ -12,6 +12,67 @@ When automating scripts you want idempotent, meaning the script should work no m
 
 ## App scripts
 
+This script is for Ubuntu 18.04.
+
+```shell
+#!/bin/bash
+
+# Update the sources list
+sudo apt-get update -y
+
+# upgrade any packages available
+sudo apt-get upgrade -y
+
+# install nginx
+sudo apt-get install nginx -y
+
+# setup nginx reverse proxy
+sudo apt install sed
+# $ and / characters must be escaped by putting a backslash before them
+sudo sed -i "s/try_files \$uri \$uri\/ =404;/proxy_pass http:\/\/localhost:3000\/;/" /etc/nginx/sites-available/default
+# restart nginx to get reverse proxy working
+sudo systemctl restart nginx
+
+# install git
+sudo apt-get install git -y
+
+# install nodejs
+# next line used to be: sudo apt-get install python-software-properties
+sudo apt-get install python-software-common
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install nodejs -y
+
+
+# create global env variable (so app vm can connect to db)
+#echo "Setting environment variable DB_HOST..."
+
+#echo "export DB_HOST=mongodb://10.0.3.37:27017/posts" >> ~/.bashrc
+#source ~/.bashrc
+export DB_HOST=mongodb:// 10.0.3.37:27017/posts
+
+# clone repo with app folder into folder called 'repo'
+git clone https://github.com/daraymonsta/CloudComputingWithAWS repo
+
+# install the app (must be after db vm is finished provisioning)
+cd repo/app
+npm install
+
+# seed database
+echo "Clearing and seeding database..."
+node seeds/seed.js
+echo "  --> Done!"
+
+# start the app (could also use 'npm start')
+
+# using pm2
+# install pm2
+sudo npm install pm2 -g
+# kill previous app background processes
+pm2 kill
+# start the app in the background with pm2
+pm2 start app.js
+```
+
 Note that this is a script for Ubuntu 20.04.
 [Nginx default configuration file contents](https://www.coderrocketfuel.com/article/default-nginx-configuration-file-inside-sites-available-default)
 
@@ -137,6 +198,44 @@ pm2 start app.js --update-env
 
 ## Database script on start up
 
+This script is for Ubuntu 18.04.
+
+```shell
+#!/bin/bash
+
+# Provisioning for db vm
+# Update the sources list
+sudo apt-get update -y
+
+# upgrade any packages available
+sudo apt-get upgrade -y
+
+# Add the Key:
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927  
+
+# Make Sure its Working
+echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+
+# It will display back - deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse
+
+# Install database - sudo apt-get install mongodb-org=3.2.20 -y
+# IMPORTANT: this line will fail if using Ubuntu 20.04 instead of 18.04
+sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20
+
+# Change bindIp from 127.0.0.1 to specific IP of app (e.g. 192.168.10.150)
+# (we could use 0.0.0.0 but this allow any IPs to connect to it)
+sudo apt install sed
+sudo sed -i "s/bindIp: 127.0.0.1/bindIp: 0.0.0.0/" /etc/mongod.conf
+
+# Start mongodb and enable it
+sudo systemctl start mongod
+
+sudo systemctl enable mongod
+
+#echo "Show whether mongo db is running..."
+#sudo systemctl status mongod
+```
+
 Note that this is a script for Ubuntu 20.04.
 
 - Provisions the upgrades and installations needed for the MongoDB database VM:
@@ -180,6 +279,9 @@ sudo systemctl restart mongodb
 
 ### - App:
 ```shell
+# check the log of processes that ahve been run/what still needs to be run
+cat /var/log/cloud-init-output.log
+
 # check the contents of current directory
 ls
 
