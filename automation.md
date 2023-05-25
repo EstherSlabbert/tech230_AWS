@@ -73,7 +73,7 @@ pm2 kill
 pm2 start app.js
 ```
 
-Note that this is a script for Ubuntu 20.04.
+Note that the following are scripts for Ubuntu 20.04.
 [Nginx default configuration file contents](https://www.coderrocketfuel.com/article/default-nginx-configuration-file-inside-sites-available-default)
 
 - Provisions the updates and installations required on the app VM:
@@ -236,7 +236,7 @@ sudo systemctl enable mongod
 #sudo systemctl status mongod
 ```
 
-Note that this is a script for Ubuntu 20.04.
+Note that the following are scripts for Ubuntu 20.04.
 
 - Provisions the upgrades and installations needed for the MongoDB database VM:
 ```shell
