@@ -63,10 +63,13 @@ Others want to access HTTP = port 80, Sparta app port = 3000, possibly an HTTPS 
 
 CIDR stands for Classless Inter-Domain Routing. A CIDR block is a notation used to define the network portion of an IP address and specify the size of the network. CIDR allows for flexible allocation of IP addresses and efficient routing by aggregating multiple IP addresses into a single block. It simplifies IP address management and enables efficient allocation of IP addresses within a network.
 
-works with bytes, gives space limits in CIDR block. /16 dictates that 10.0. = fixed; 0.0 can range from 0-255.
-10.0.0.0/24 or 10.0.2.0/24 or any no.from 0-255 in the second last place.
+Works with bits. /16 dictates that 10.0. = fixed; 0.0 can range from 0-255. /24 any no.from 0-255 for last place.
+
+[CIDR chart](https://www.ripe.net/about-us/press-centre/IPv4CIDRChart_2015.pdf)
 
 [AWS - What is CIDR?](https://aws.amazon.com/what-is/cidr/#:~:text=A%20CIDR%20block%20is%20a,regional%20internet%20registries%20(RIR)).
+
+[Digital Ocean - Understanding networks](https://www.digitalocean.com/community/tutorials/understanding-ip-addresses-subnets-and-cidr-notation-for-networking).
 
 [SSH agent forwarding - SSH into private subnet](https://digitalcloud.training/ssh-into-ec2-in-private-subnet/#:~:text=You%20can%20SSH%20into%20EC2,located%20in%20a%20public%20subnet.)
 
@@ -157,7 +160,7 @@ See information to create an EC2 instance here: [Create an EC2 instance](https:/
 
 <img src="/images/ec2-nw3.png"  width="60%" height="60%">
 
-_Note_: Existing Security Groups will not work with a created VPC; you must create a new Security Group with rules for the required ports and a descriptive name.
+_Note_: Existing Security Groups will not work with a created VPC; you must create a new Security Group with rules for the required ports and give a descriptive name.
 
 3. Launch your EC2 instance(s) (VM(s)) and you should be able to access the webserver that your App VM is running using the public IPv4 in your web browser, provided it is a public subnet that you connected your VM to.
 
