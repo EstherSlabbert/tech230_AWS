@@ -143,7 +143,7 @@ _Note_: Only link the public subnet (app VM's subnet) with public route table.
 ### <a id="create-ec2-instance-and-link-to-vpc">8. Create EC2 instance(s) and link to VPC</a>
 
 1. Create EC2 instance(s) or VM(s). _Note_: you can use an AMI to do this and add 'User Data' if necessary or you can use a new EC2 instance.
-See information to create an EC2 instance here: [Create and EC2 instance](https://github.com/EstherSlabbert/tech230_AWS/blob/main/aws_ec2_instances_and_amis.md#create-ec2-instance).
+See information to create an EC2 instance here: [Create an EC2 instance](https://github.com/EstherSlabbert/tech230_AWS/blob/main/aws_ec2_instances_and_amis.md#create-ec2-instance). And what to put into the User Data here: [Automation](https://github.com/EstherSlabbert/tech230_AWS/blob/main/automation.md).
 
 2. While setting up your EC2 edit 'Network Settings':
   2.1. Select your created VPC, rather than the Default VPC.
