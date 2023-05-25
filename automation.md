@@ -46,9 +46,9 @@ sudo apt-get install nodejs -y
 # create global env variable (so app vm can connect to db)
 #echo "Setting environment variable DB_HOST..."
 
-#echo "export DB_HOST=mongodb://10.0.3.37:27017/posts" >> ~/.bashrc
+#echo "export DB_HOST=mongodb://10.0.3.37:27017/posts" >> ~/.bashrc # change IP to be the DB IP
 #source ~/.bashrc
-export DB_HOST=mongodb:// 10.0.3.37:27017/posts
+export DB_HOST=mongodb://10.0.3.37:27017/posts
 
 # clone repo with app folder into folder called 'repo'
 git clone https://github.com/daraymonsta/CloudComputingWithAWS repo
