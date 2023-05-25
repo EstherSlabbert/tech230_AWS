@@ -140,18 +140,18 @@ _Note_: Only link the public subnet (app VM's subnet) with public route table.
 
 <img src="/images/rt-ig2.png"  width="60%" height="60%">
 
-### <a id="create-ec2-instance-and-link-to-vpc">8. Create EC2 instance and link to VPC</a>
+### <a id="create-ec2-instance-and-link-to-vpc">8. Create EC2 instance(s) and link to VPC</a>
 
-1. Create EC2 instance(s) or VM(s). _Note_: you can use an AMI to do this and add 'User Data' if necessary.
+1. Create EC2 instance(s) or VM(s). _Note_: you can use an AMI to do this and add 'User Data' if necessary or you can use a new EC2 instance.
 See information to create an EC2 instance here: [Create and EC2 instance](https://github.com/EstherSlabbert/tech230_AWS/blob/main/aws_ec2_instances_and_amis.md#create-ec2-instance).
 
 2. While setting up your EC2 edit 'Network Settings':
   2.1. Select your created VPC, rather than the Default VPC.
-  2.2. Enable assigning a public IP for the public subnet VM.
+  2.2. Enable assigning a public IP for the public subnet VM. (This is not necessary for the private VM(s)).
     
   <img src="/images/ec2-nw1.png"  width="60%" height="60%">
   
-  2.3. Create a Security Group with the needed rules.
+  2.3. Create a Security Group with the needed rules. (App VM needs SSH port 22 for you to log in (specify your IP) and HTTP port 80 for anyone to access (0.0.0.0/0). Database VM only needs port 27017 for MongoDB with access to all VMs with in the VPC (0.0.0.0/0).)
 
 <img src="/images/ec2-nw2.png"  width="60%" height="60%">
 
@@ -159,6 +159,6 @@ See information to create an EC2 instance here: [Create and EC2 instance](https:
 
 _Note_: Existing Security Groups will not work with a created VPC; you must create a new Security Group with rules for the required ports and a descriptive name.
 
-3. Launch your EC2 instance (VM) and you should be able to access the webserver that it is running, provided it is a public subnet that you connected your VM to.
+3. Launch your EC2 instance(s) (VM(s)) and you should be able to access the webserver that your App VM is running using the public IPv4 in your web browser, provided it is a public subnet that you connected your VM to.
 
 
